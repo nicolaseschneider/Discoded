@@ -1,2 +1,0 @@
-export const RECEIVE_USER = "RECEIVE_USER"
-export const DESTROY_SESSION = "DESTROY_SESSION"

@@ -6,16 +6,21 @@ export const signUp = (user) =>{
     return $.ajax({
         method: "POST",
         url: "/api/users",
-        data: user
+        data: {user}
     })
-}
+};
 
 export const createSession = (user) =>{
     return $.ajax({
         method: "POST",
         url: "/api/session",
-        data: user
+        data: { user }
     })
-}
+};
 
-export const logout
+export const logout = () => (
+    $.ajax({
+        url:'/api/session',
+        method: 'DELETE'
+    })
+);
