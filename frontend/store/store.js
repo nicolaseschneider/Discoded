@@ -1,6 +1,7 @@
-import { createStore } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from '../reducers/root_reducer';
 
-const thunk =( {getstate, dispatch} ) => next => action => {
+const thunk =( { getstate, dispatch} ) => next => action => {
   if(action instanceof Function){
     return action(dispatch, getState);
   }
