@@ -17,7 +17,7 @@ const receiveErrors = errors => ({
     errors,
 });
 
-export const signUp = formUser => dispatch => APIAuthUtil.postUser(formUser)
+export const signUp = formUser => dispatch => APIAuthUtil.signUp(formUser)
     .then(user => dispatch(receiveSession(user)), 
     errors => dispatch(receiveErrors(errors)));
 
@@ -25,6 +25,6 @@ export const login = formUser => dispatch => APIAuthUtil.login(formUser)
     .then(user => dispatch(receiveCurrentUser(user)), 
     errors => dispatch(receiveErrors(errors)));
     
-export const logout = () => dispatch => APIAuthUtil.deleteSession()
+export const logout = () => dispatch => APIAuthUtil.logout()
     .then( () => dispatch(destroySession()), 
     errors => dispatch(receiveErrors(errors)));
