@@ -4,12 +4,12 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import SuperSplashPage from './splash/splash_super';
 
-const App = (props) => (
+const App = () => (
   <div>
     <header>
       <h1> Discoded </h1>
     </header>
-    {/* <SuperSplashPage currentUser={props.session.currentUser} /> */}
+    <SuperSplashPage />
     <AuthRouteLoggedOut path="/login" component={LoginFormContainer} />
     <AuthRouteLoggedOut path="/signup" component={SignUpFormContainer} />
 

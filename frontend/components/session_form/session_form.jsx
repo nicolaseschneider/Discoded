@@ -8,26 +8,26 @@ class SessionForm extends React.Component{
       username: "",
       password: ""
     };
-    const handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(field){
     return (e) => { 
-      this.setState({ [type]: e.target.value }); 
+      return this.setState({ [field]: e.target.value }); 
     };
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.submitAction(this.state).then( () => this.props.history.push('/'));
+    this.props.submitAction(this.state);
   }
 
   render () {
-    <div>
+    return <div>
       <ul>
         {this.props.errors}
       </ul>
-      <form className='session-form' onSubmit={handleSubmit}>
+      <form className='session-form' onSubmit={this.handleSubmit}>
         <label> Username:
           <input type="text" value={this.state.username} onChange={this.handleInput('username')} />
         </label>
@@ -36,7 +36,7 @@ class SessionForm extends React.Component{
           <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
         </label>
 
-        <input type="submit" value="this.props.formType" />
+        <input type="submit" value={this.props.formType} />
       </form>
     </div>
   }
