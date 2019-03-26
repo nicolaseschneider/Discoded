@@ -55,7 +55,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.4.1)
+    bootsnap (1.4.2)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
@@ -69,7 +69,7 @@ GEM
       xpath (~> 3.2)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (2.1.0)
+    chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coderay (1.1.2)
@@ -115,7 +115,7 @@ GEM
     msgpack (1.2.9)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.10.1)
+    nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
     pg (1.1.4)
     pry (0.12.2)
@@ -146,11 +146,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.2.2.1)
       actionpack (= 5.2.2.1)
       activesupport (= 5.2.2.1)
@@ -227,7 +222,6 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.2)
-  rails_12factor
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -240,4 +234,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.17.3
+   1.17.1
