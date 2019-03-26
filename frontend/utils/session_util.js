@@ -1,7 +1,3 @@
-
-
-
-
 export const signUp = (user) =>{
     return $.ajax({
         method: "POST",
