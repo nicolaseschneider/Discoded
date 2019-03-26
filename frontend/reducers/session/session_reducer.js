@@ -1,7 +1,7 @@
 import { RECEIVE_SESSION, DESTROY_SESSION } from '../../actions/session_actions';
 
 const _nullState = {
-  currentUser: null
+  currentUser: false
 };
 
 export default (state = _nullState, action) => {

@@ -1,1 +1,6 @@
-export default "mhmhmhm";
+export default (props) =>(
+  <div>
+    
+  </div>
+
+);

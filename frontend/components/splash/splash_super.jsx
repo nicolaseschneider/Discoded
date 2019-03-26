@@ -1,5 +1,5 @@
 import SplashLoggedIn from './splash_loggedin_container';
-import SplashLoggedOut from './splash_loggedout_container';
+import SplashLoggedOut from './splash_page_loggedout';
 import React from 'react';
 
 export default (props) =>{

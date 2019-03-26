@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/bundle.js
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
@@ -22,6 +22,6 @@
 
 /public/assets
 .byebug_history
-
+bundle.js*
 # Ignore master key for decrypting credentials and more.
 /config/master.key

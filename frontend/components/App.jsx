@@ -9,7 +9,7 @@ const App = (props) => (
     <header>
       <h1> Discoded </h1>
     </header>
-    <SuperSplashPage currentUser={props.session.currentUser} />
+    {/* <SuperSplashPage currentUser={props.store.session.currentUser} /> */}
     <AuthRouteLoggedOut path="/login" component={LoginFormContainer} />
     <AuthRouteLoggedOut path="/signup" component={SignUpFormContainer} />
 
