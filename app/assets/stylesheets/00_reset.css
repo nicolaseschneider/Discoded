@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Whitney";
+  src: font-url("Whitney.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: font-url("Whitney-Medium.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: font-url("Whitney-Semibold.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: font-url("Whitney-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+/* reset */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p,
+a, form, label, article, aside, canvas, figure, footer, input,
+header, nav, section, ul, ol, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+.app{
+  height:100%;
+}
+
+html, body, #root {
+  height: 100%;
+}

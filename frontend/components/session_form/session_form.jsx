@@ -8,7 +8,8 @@ class SessionForm extends React.Component{
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      email: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -38,26 +39,48 @@ class SessionForm extends React.Component{
       <span>
         need an account? <Link to="/signup">Register</Link>
       </span>;
+    const header = this.signingUpBool() ? 
+      <h1>Create an account</h1> :
+      (
+        <span>
+          <h1>Welcome back!</h1>
+          <p>We're so excited to see you again!</p>
+        </span>
+      );
+    const emailField = this.signingUpBool() ? 
+      (<label> Email
+        <input className='session-input' type="text" value={this.state.email} onChange={this.handleInput('email')} />
+      </label>) : "";
 
+    return (
 
-    return <div className='session-div'>
-      <form className='session-form' onSubmit={this.handleSubmit}>
-      
-        <strong>
-        </strong>
-        <label> Username
-          <input className='session-input' type="text" value={this.state.username} onChange={this.handleInput('username')} />
-        </label>
+      <div className='session-div'>
+        <div className='form-wrap'>
 
-        <label>Password
-          <input className='session-input' type="password" value={this.state.password} onChange={this.handleInput('password')} />
-        </label>
-        <input className='session-submit' type="submit" value={this.props.formType} />
-        {otherFormLink}
-      </form>
+        <form className='session-form' onSubmit={this.handleSubmit}>
+        
+          <strong className='session-header'>
+            {header}
+          </strong>
+          <label> Username
+            <input className='session-input' type="text" value={this.state.username} onChange={this.handleInput('username')} />
+          </label>
+          {emailField}
+          <label>Password
+            <input className='session-input' type="password" value={this.state.password} onChange={this.handleInput('password')} />
+          </label>
+          <input className='session-submit' type="submit" value={this.props.formType} />
+          {otherFormLink}
+        </form>
+      </div>
     </div>
+    )
   }
 
 }
+
+// $(sessionform).addClass('fadeOut')
+// sleep(.3s)
+// redirect to /signUp
 
 export default SessionForm
