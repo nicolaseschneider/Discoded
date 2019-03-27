@@ -35,7 +35,22 @@ class SessionForm extends React.Component{
   }
 
   render () {
+    let passEmpt = 'Password';
+    let userEmpt = 'Username';
+    let emailEmpt = 'Email'
+    const parsedErrors = () => {
+      this.props.errors.forEach(element => {
+        if (element.split(" ")[0] === 'Username'){
+          userEmpt = "Username - " + element; 
+        }
+        if (element.split(" ")[0] === 'Password'){
+          passEmpt = "Password - " + element;
+        }
+       
+      });
 
+    };
+  
     const otherFormLink = this.signingUpBool() ? 
       <Link to="/login">Already have an account?</Link> :
       <span>
@@ -50,10 +65,10 @@ class SessionForm extends React.Component{
         </span>
       );
     const emailField = this.signingUpBool() ? 
-      (<label> Email
+      (<label> {emailEmpt}
         <input className='session-input' type="text" value={this.state.email} onChange={this.handleInput('email')} />
       </label>) : "";
-    console.log(this.props.errors.length)
+    
     return (
 
       <div className='session-div'>
@@ -64,11 +79,11 @@ class SessionForm extends React.Component{
           <strong className='session-header'>
             {header}
           </strong>
-          <label> Username
+          <label> {userEmpt}
             <input className='session-input' type="text" value={this.state.username} onChange={this.handleInput('username')} />
           </label>
           {emailField}
-          <label>Password
+          <label> {passEmpt}
             <input className='session-input' type="password" value={this.state.password} onChange={this.handleInput('password')} />
           </label>
           <input className='session-submit' type="submit" value={this.props.formType} />

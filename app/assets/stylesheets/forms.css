@@ -81,6 +81,9 @@
   caret-color: rgb(8, 8, 8);
   color: white; 
 }
+.session-submit:hover{
+  background-color: #6578bf;
+}
 .session-input:hover{
   border: #040405  1px solid;
 }
