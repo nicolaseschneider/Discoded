@@ -26,7 +26,7 @@ class SessionForm extends React.Component{
       return false;
     }
   }
-  parseErrors()
+
   
   handleSubmit(e){
     e.preventDefault();
