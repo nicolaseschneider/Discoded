@@ -73,9 +73,8 @@
   cursor: pointer;
   height: 44px;
 }
-.bad-input{
-  border:rgb(237,61,72);
-}
+
+
 .session-input:focus {
   outline:none;
   caret-color: rgb(8, 8, 8);
@@ -89,6 +88,12 @@
 }
 .session-input:focus {
   border-color: #7289da;
+}
+.bad-input{
+  border:1px solid rgb(237,61,72);
+}
+.bad-label{
+  color: rgb(237,61,72);
 }
 @keyframes fadeIn{
   0%{
