@@ -1,7 +1,7 @@
 import * as APIAuthUtil from '../utils/session_util';
 export const RECEIVE_SESSION = "RECEIVE_SESSION"; 
 export const DESTROY_SESSION = "DESTROY_SESSION";
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_ERRORS';
 
 
 const receiveSession = user =>({
