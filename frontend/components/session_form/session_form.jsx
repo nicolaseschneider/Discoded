@@ -12,6 +12,7 @@ class SessionForm extends React.Component{
       email: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   handleInput(field){
@@ -26,12 +27,13 @@ class SessionForm extends React.Component{
       return false;
     }
   }
-
-  
+  handleDemoSubmit(e){
+    e.preventDefault();
+    this.props.demoLogin({ username: 'Karateman', password: 'Glubgluby', email: 'nicolas.e.schneider@vanderbilt.edu'});
+  }
   handleSubmit(e){
     e.preventDefault();
-    const {username, email, password } = this.state
-    this.props.submitAction({ username, email, password });
+    this.props.submitAction(this.state);
   }
 
   render () {
@@ -111,6 +113,7 @@ class SessionForm extends React.Component{
               />
           </label>
           <input className='session-submit' type="submit" value={this.props.formType} />
+            <button className='session-submit'onClick={this.handleDemoSubmit}>Login Demo User</button>
           {otherFormLink}
         </form>
       </div>

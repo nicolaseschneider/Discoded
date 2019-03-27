@@ -1,0 +1,103 @@
+.splash-page-wrapper{
+  min-width: 1000px;
+  background: #26262b;
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+}
+.splash-header-left > li{
+  padding: 10px;
+  margin: 5px;
+}
+.splash-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}
+.splash-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.splash-img{
+  height: 32px;
+}
+.typeface{
+  height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.splash-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color:  #fff;
+}
+
+.splash-header-left{
+  list-style: none;
+  display: flex;
+
+}
+
+.splash-content > h1{
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+.splash-content > p{
+  opacity: .6;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 12px;
+  margin-bottom: 30px;
+  max-width: 710px;
+}
+
+.splash-header-right{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  list-style: none;
+}
+
+.splash-header-right > li{
+  margin: 5px;
+  padding: 5px;
+  font-size: 18px;
+}
+
+.splash-header{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+  padding: 0 30px;
+  font-size: 14px;
+  color: rgb(255,255,255,.75);
+}
+
+.splash-login-link{
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 20px;
+  color: inherit;
+  line-height: 24px;
+  padding: 5px 17px 7px;
+  font-size: 14px;
+}
+
+.splash-login-link:hover{
+  border: 2px solid rgba(255,255,255,1);
+}
+
+.splash-header-right > li:hover{
+  color: rgb(255,255,255,1);
+}
+.splash-header{
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}

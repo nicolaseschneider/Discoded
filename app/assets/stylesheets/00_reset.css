@@ -36,6 +36,7 @@ header, nav, section, ul, ol, li {
 
 .app{
   height:100%;
+  background: #26262b;
 }
 
 html, body, #root {

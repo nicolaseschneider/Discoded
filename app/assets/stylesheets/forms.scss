@@ -26,9 +26,11 @@
   width: 480px;
   font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .session-div a{
   color: #7289da;
   text-decoration: none;
+  margin-top: 10px;
 }
 .session-div  a:hover{
   text-decoration: underline;
@@ -45,7 +47,7 @@
   color: white;
 }
 
-.session-form input {
+.session-form input, .session-form button {
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 3px;
@@ -62,6 +64,7 @@
   color: whitesmoke; 
   background-color: rgba(0,0,0,.1);
   border: 1px solid rgba(0,0,0,.3);
+  transition: background-color .15s ease,border .15s ease;
 }
 .session-submit{
   border: none;
@@ -73,11 +76,11 @@
   cursor: pointer;
   height: 44px;
 }
-
+    
 
 .session-input:focus {
   outline:none;
-  caret-color: rgb(8, 8, 8);
+  caret-color: white;
   color: white; 
 }
 .session-submit:hover{
