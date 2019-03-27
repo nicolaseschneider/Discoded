@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
     if @user.nil?
       render json: ["Invalid username/password"], status: 401
     else
-      login_user(@user)
+      login(@user)
       render :show
     end
   end

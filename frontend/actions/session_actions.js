@@ -22,7 +22,7 @@ export const signUp = formUser => dispatch => APIAuthUtil.signUp(formUser)
     errors => dispatch(receiveErrors(errors)));
 
 export const login = formUser => dispatch => APIAuthUtil.login(formUser)
-    .then(user => dispatch(receiveCurrentUser(user)), 
+    .then(user => dispatch(receiveSession(user)), 
     errors => dispatch(receiveErrors(errors)));
     
 export const logout = () => dispatch => APIAuthUtil.logout()
