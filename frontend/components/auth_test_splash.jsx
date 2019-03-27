@@ -12,7 +12,8 @@ export default (props) => {
     );
   } else {
     return (
-      <div>
+      <div className="splashPageWrapper">
+      <header className="splash-header"></header>
         <Link to='/signup'>Sign Up</Link>
         <Link to='/login'>Login!</Link>
       </div>  
