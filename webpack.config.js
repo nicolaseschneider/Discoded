@@ -7,12 +7,6 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    loaders: [
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url?limit=25000'
-      }
-    ],
     rules: [
       {
         test: [/\.jsx?$/],
