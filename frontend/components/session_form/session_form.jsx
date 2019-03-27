@@ -9,7 +9,7 @@ class SessionForm extends React.Component{
     this.state = {
       username: "",
       password: "",
-      email: ""
+      email: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,10 +26,12 @@ class SessionForm extends React.Component{
       return false;
     }
   }
-
+  parseErrors()
+  
   handleSubmit(e){
     e.preventDefault();
-    this.props.submitAction(this.state);
+    const {username, email, password } = this.state
+    this.props.submitAction({ username, email, password });
   }
 
   render () {
@@ -51,13 +53,13 @@ class SessionForm extends React.Component{
       (<label> Email
         <input className='session-input' type="text" value={this.state.email} onChange={this.handleInput('email')} />
       </label>) : "";
-
+    console.log(this.props.errors.length)
     return (
 
       <div className='session-div'>
         <div className='form-wrap'>
 
-        <form className='session-form' onSubmit={this.handleSubmit}>
+        <form className="session-form" onSubmit={this.handleSubmit} >
         
           <strong className='session-header'>
             {header}
@@ -76,11 +78,8 @@ class SessionForm extends React.Component{
     </div>
     )
   }
-
 }
 
-// $(sessionform).addClass('fadeOut')
-// sleep(.3s)
-// redirect to /signUp
 
-export default SessionForm
+
+export default SessionForm;

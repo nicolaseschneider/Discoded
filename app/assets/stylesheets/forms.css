@@ -108,7 +108,7 @@
   }
 }
 .fadeOut{
-  animation: fadeOut .2s forwards 0s ease;
+  animation: fadeOut 10s forwards 0s ease;
 }
 .session-form{
   animation: fadeIn .3s forwards 0s ease;

@@ -13,7 +13,7 @@ const destroySession = () => ({
     type: DESTROY_SESSION,
 });
 const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_SESSION_ERRORS,
     errors,
 });
 
