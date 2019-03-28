@@ -1,33 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-class Splash extends React.Component{
-  
+class Splash extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { dropped: false };
+    this.mouseOnDropDown = this.mouseOnDropDown.bind(this);
+    this.mouseOutDropDown = this.mouseOutDropDown.bind(this);
+  }
 
 
-  render () {
-      
-      if(this.props.currentUser){
-        return (
-          <div>
-            <h1>Welcome user #{this.props.currentUser}</h1>
-            <button onClick={this.props.logout}>Log Out</button>
+  mouseOnDropDown() {
+    this.setState({ dropped: true });
+  }
+
+  mouseOutDropDown() {
+    this.setState({ dropped: false });
+  }
+
+  render() {
+    //logged in splash page
+    if (this.props.currentUser) {
+      return (
+        <div>
+          <h1>Welcome user #{this.props.currentUser}</h1>
+          <button onClick={this.props.logout}>Log Out</button>
         </div>
       );
+
     } else {
+      //splash page! stylish!
       return (
         <div className="splash-page-wrapper">
           <header className="splash-header">
             <div className="splash-logo">
-              <img className="splash-img" src={window.logoURL}/>
+              <img className="splash-img" src={window.logoURL} />
               <img className="typeface" src={window.logoTYPE} />
             </div>
+
             <ul className="splash-header-left">
 
               <li>
                 <a href="https://github.com/NicolasESchneider/Discoded"> View on Github</a>
               </li>
-              <li>
-                Project Wiki  <i className="fas fa-chevron-circle-down"></i>
+              <li onMouseEnter={this.mouseOnDropDown}>
+                Project Wiki <i className="fas fa-chevron-circle-down"></i>
+                <ul
+                  className={this.state.dropped ? "splash-drop-down" : "splash-drop-down-hidden"}
+                  onMouseLeave={this.mouseOutDropDown}>
+                  <li> MVP </li>
+                  <li> SCHEMA </li>
+                  <li> FRONT END STATE </li>
+                  <li> BACK END ROUTES </li>
+                  <li> FRONT END ROUTES </li>
+                </ul>
               </li>
             </ul>
             <ul className="splash-header-right">
@@ -53,10 +79,10 @@ class Splash extends React.Component{
             </p>
           </div>
 
-        </div>  
+        </div>
       );
     }
-    
+
   };
 }
 

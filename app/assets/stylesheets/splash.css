@@ -36,9 +36,7 @@
 }
 
 .splash-header-left{
-  list-style: none;
   display: flex;
-
 }
 
 .splash-content > h1{
@@ -60,7 +58,7 @@
   display: flex;
   align-items: center;
   margin-left: auto;
-  list-style: none;
+
 }
 
 .splash-header-right > li{
@@ -82,7 +80,7 @@
 }
 
 .splash-login-link{
-  border: 2px solid rgba(255,255,255,0.8);
+  border: 2px solid rgba(255,255,255,0.75);
   border-radius: 20px;
   color: inherit;
   line-height: 24px;
@@ -94,10 +92,34 @@
   border: 2px solid rgba(255,255,255,1);
 }
 
-.splash-header-right > li:hover{
+.splash-page-wrapper li:hover{
   color: rgb(255,255,255,1);
 }
 .splash-header{
   margin-bottom: 15px;
   padding-bottom: 10px;
+}
+
+.splash-page-wrapper ul{
+  list-style: none;
+}
+.splash-drop-down-hidden{
+  display: none;
+}
+
+.splash-drop-down{
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 55px;
+  padding-bottom: 15px;
+  background-color:whitesmoke;
+  color: grey;
+  border-radius: 5px;
+  padding:5px;
+}
+
+.splash-drop-down > li:hover{
+  background-color: slategrey;
+
 }
