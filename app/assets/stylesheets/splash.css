@@ -37,6 +37,7 @@
 
 .splash-header-left{
   display: flex;
+  position: relative;
 }
 
 .splash-content > h1{
@@ -109,17 +110,231 @@
 
 .splash-drop-down{
   display: flex;
-  position: absolute;
   flex-direction: column;
-  top: 55px;
-  padding-bottom: 15px;
-  background-color:whitesmoke;
+  top: 45px;
+  left: 115px;
+  background-color:white;
   color: grey;
   border-radius: 5px;
-  padding:5px;
+  animation: dropDown .2s forwards 0s ease-out;
+  padding: 15px 10px;
+  text-decoration: none;
+  margin-right: 8px;
+  opacity: .9;
+  position: absolute;
+  font-size: 12px;
+}
+.splash-drop-down > li:hover{
+  background-color: rgb(185, 185, 185, 1);
+  color: rgb(35,35,35,1);
+}
+.splash-drop-down > li{
+  font-size: 12px;
+  padding: 3px;
+  border-radius: 5px;
+}
+.splash-art{
+  position: relative;
+}
+.t {
+  opacity: .3;
+  z-index: 1;
 }
 
-.splash-drop-down > li:hover{
-  background-color: slategrey;
+.splash-art > img{
+  position: absolute;
+}
+.triangle1{
+ top: 255px;
+ right: 367px;
+}
+.triangle2{
+ top: 400px;
+ left: 384px;
+}
+.triangle3{
+ top: 285px;
+ right: 845px;
+}
+.triangle4{
+ top:180px;
+ right: 1100px;
+}
+.dot5{
+ top: 242px;
+ right: 1526px;
+}
+.dot1{
+ top: 420px;
+ right: 754px;
+}
+.dot2{
+ top: 600px;
+ right: 1337px;
+}
+.dot3{
+ top: 190px;
+ right: 243px;
+}
+.dot4{
+ top: 200px;
+ right: 548px;
+}
+.square1{
+ top: 390px;
+ right: 984px;
+}
+.square2{
+ top: 620px;
+ right: 407px;
+}
+.square3{
+ top: 588px;
+ right: 79px;
+}
+.square4{
+ top: 90px;
+ right: 875px;
+}
+.computer{
+  z-index: 3;
+  top: 360px;
+  right: 500px; 
+}
+.x1{
+ top: 293px;
+ right: 1326px;
+}
+.x2{
+ top: 30px;
+ right: 575px;
+}
+.laptop{
+  z-index: 4;
+  top: 480px;
+  right: 100px; 
+}
+.headset{
+  z-index: 5;
+  top: 457px;
+  right: 160px; 
+}
+.phone1{
+  z-index: 4;
+  top: 580px;
+  right: 1030px; 
+}
+.phone2{
+  z-index: 4;
+  top: 573px;
+  right: 1180px; 
+}
+.controller{
+  z-index: 4;
+  top: 720px;
+  right: 860px; 
+}
+.movin{
+  z-index: 2;
+  animation: moving 5s infinite 0s ease-in;
+}
 
+.bomb{
+  z-index: 1;
+  top: 260px;
+  right: 1200px; 
+  animation: moving 5s infinite .05s ease-in-out;
+}
+
+.cartridge{
+  z-index: 2;
+  top: 320px;
+  right: 480px; 
+}
+.coin3{
+  z-index: 2;
+  top: 290px;
+  right: 1160px; 
+}
+.coin2{
+  z-index: 2;
+  top: 190px;
+  right: 760px; 
+}
+.box{
+  z-index: 2;
+  top: 280px;
+  right: 980px; 
+}
+.box:hover{
+  cursor: pointer;
+}
+.chaching {
+  animation: chaching 1s forwards 0s linear;
+}
+.coin1 {
+  z-index: 1;
+  top: 280px;
+  right: 985px;
+}
+.splash-buttons{
+  display: flex;
+  justify-content: center;
+}
+.splash-buttons > a{
+  padding: 5px 17px 7px;
+  border-radius: 3px;
+  width: 225px;
+  margin: 10px;
+}
+.splash-buttons > a:hover{
+  transform: translateY(3px);
+}
+.login-link{
+  background-color: #7289da;
+  color: #fff;
+}
+.signup-link{
+  background-color: #fff;
+  color:  #7289da;
+}
+
+
+@keyframes dropDown{
+0%{
+  transform: translateY(-10px);
+  scale: 30%;
+  opacity: .2;
+  }
+100%{
+  scale: 100%;
+  transform: translateY(0px);
+  opacity: .9;
+  }
+}
+@keyframes moving{
+    0%{
+        transform: rotate(0) translateY(-2px);
+        }
+    25%{
+        transform: rotate(0) translateY(-10px);
+        }
+    71%{
+        transform: rotate(0) translateY(10px);
+        }
+    100%{
+        transform: rotate(0) translateY(-2px);
+        }
+}
+
+@keyframes chaching{
+  0%{
+    transform: rotate(0);
+  }
+  50%{
+    transform: rotate3d(0, 1, 0, 180deg) translateY(-120px)
+  }
+  100%{
+    transform: rotate3d(0, 1, 0, 0deg) translateY(0px)
+  }
 }

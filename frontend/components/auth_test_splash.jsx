@@ -4,20 +4,28 @@ class Splash extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { dropped: false };
+    this.state = { dropped: false, chaching: false, clickEnabled: true };
     this.mouseOnDropDown = this.mouseOnDropDown.bind(this);
     this.mouseOutDropDown = this.mouseOutDropDown.bind(this);
+    this.chaching = this.chaching.bind(this);
   }
 
 
   mouseOnDropDown() {
-    this.setState({ dropped: true });
+    this.setState({ dropped: true, chaching: false, clickEnabled: true });
   }
 
   mouseOutDropDown() {
-    this.setState({ dropped: false });
+    this.setState({ dropped: false, chaching: false, clickEnabled: true});
+    // document.getElementsByClassName("splash-drop-down").className("fading-out")
   }
-
+  chaching(){
+    if(this.state.clickEnabled){
+      this.setState({ dropped: false, chaching: true, clickEnabled: false });
+      setTimeout(() => this.setState({ dropped: false, chaching: false, clickEnabled: true }), 1000);
+    }
+  }
+  
   render() {
     //logged in splash page
     if (this.props.currentUser) {
@@ -48,17 +56,17 @@ class Splash extends React.Component {
                 <ul
                   className={this.state.dropped ? "splash-drop-down" : "splash-drop-down-hidden"}
                   onMouseLeave={this.mouseOutDropDown}>
-                  <li> MVP </li>
-                  <li> SCHEMA </li>
-                  <li> FRONT END STATE </li>
-                  <li> BACK END ROUTES </li>
-                  <li> FRONT END ROUTES </li>
+                  <li><a href="https://github.com/NicolasESchneider/Discoded/wiki/MVP-list">MVP-list</a> </li>
+                  <li><a href="https://github.com/NicolasESchneider/Discoded/wiki/Schema">Schema</a></li>
+                  <li><a href="https://github.com/NicolasESchneider/Discoded/wiki/Sample-State">Sample State</a> </li>
+                  <li><a href="https://github.com/NicolasESchneider/Discoded/wiki/backend-routes">Backend Routes</a></li>
+                  <li><a href="https://github.com/NicolasESchneider/Discoded/wiki/frontend-routes">Frontend Routes</a></li>
                 </ul>
               </li>
             </ul>
             <ul className="splash-header-right">
               <li>
-                <a className='nav-icon' href="https://www.linkedin.com/in/nicolas-schneider-01/" ><i className="fab fa-linkedin"></i></a>
+                <i className="fab fa-linkedin"></i>
               </li>
               <li>
                 <a className='nav-icon' href="https://github.com/NicolasESchneider"><i className="fab fa-github-square"></i></a>
@@ -77,7 +85,45 @@ class Splash extends React.Component {
               All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
               Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.
             </p>
+            <div className="splash-buttons">
+              <Link className="signup-link" to='/signup'>Sign Up</Link>
+              <Link className="login-link" to='/login'>Open Discoded in browser</Link>
+            </div>
           </div>
+
+          <div className="splash-art">
+            <img 
+              className={this.state.chaching ? ("coin1 chaching") : ("coin1")} src={window.coin} 
+            />
+            <img className="coin2 movin" src={window.coin}/>
+            <img className="bomb" src={window.bomb} />
+            <img className="coin3 movin" src={window.coin} />
+            <img className="laptop" src={window.laptop} />
+            <img className="phone1" src={window.phone} />
+            <img className="triangle1 t" src={window.triangle} />
+            <img className="triangle2 t" src={window.triangle} />
+            <img className="triangle3 t" src={window.triangle} />
+            <img className="triangle4 t" src={window.triangle} />
+            <img className="dot5 t" src={window.dot} />
+            <img className="controller" src={window.controller} />
+            <img className="cartridge movin" src={window.cartridge} />
+            <img className="dot1 t" src={window.dot} />
+            <img className="dot4 t" src={window.dot} />
+            <img className="dot3 t" src={window.dot} />
+            <img className="dot2 t" src={window.dot} />
+            <img className="square1 t" src={window.square} />
+            <img className="square3 t" src={window.square} />
+            <img className="square2 t" src={window.square} />
+            <img className="square4 t" src={window.square} />
+            <img className="phone2" src={window.cell} />
+            <img className="computer" src={window.computer} />
+            <img className="x1 t" src={window.x} />
+            <img className="x2 t" src={window.x} />
+            <img className="box" onClick={this.chaching} src={window.box} />
+            <img className="headset" src={window.headset} />
+          </div>
+          <footer className="splash-footer">
+          </footer>
 
         </div>
       );

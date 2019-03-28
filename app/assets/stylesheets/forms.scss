@@ -79,18 +79,16 @@
     
 
 .session-input:focus {
-  outline:none;
+  outline: none;
   caret-color: white;
-  color: white; 
+  color: white;  
+  border-color: #7289da;
 }
 .session-submit:hover{
   background-color: #6578bf;
 }
 .session-input:hover{
   border: #040405  1px solid;
-}
-.session-input:focus {
-  border-color: #7289da;
 }
 .bad-input{
   border:1px solid rgb(237,61,72);
