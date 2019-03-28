@@ -2,7 +2,6 @@
   min-width: 1000px;
   background: #26262b;
   font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  
 }
 .splash-header-left > li{
   padding: 10px;
@@ -138,7 +137,7 @@
 }
 .t {
   opacity: .3;
-  z-index: 1;
+
 }
 
 .splash-art > img{
@@ -199,7 +198,7 @@
 .computer{
   z-index: 3;
   top: 360px;
-  right: 500px; 
+  right: 690px; 
 }
 .x1{
  top: 293px;
@@ -212,27 +211,27 @@
 .laptop{
   z-index: 4;
   top: 480px;
-  right: 100px; 
+  right: 200px; 
 }
 .headset{
   z-index: 5;
   top: 457px;
-  right: 160px; 
+  right: 260px; 
 }
 .phone1{
   z-index: 4;
   top: 580px;
-  right: 1030px; 
+  right: 1270px; 
 }
 .phone2{
   z-index: 4;
   top: 573px;
-  right: 1180px; 
+  right: 1430px; 
 }
 .controller{
   z-index: 4;
   top: 720px;
-  right: 860px; 
+  right: 1080px; 
 }
 .movin{
   z-index: 2;
@@ -242,29 +241,29 @@
 .bomb{
   z-index: 1;
   top: 260px;
-  right: 1200px; 
+  right: 1300px; 
   animation: moving 5s infinite .05s ease-in-out;
 }
 
 .cartridge{
   z-index: 2;
-  top: 320px;
-  right: 480px; 
+  top: 310px;
+  right: 590px; 
 }
 .coin3{
   z-index: 2;
   top: 290px;
-  right: 1160px; 
+  right: 1260px; 
 }
 .coin2{
   z-index: 2;
   top: 190px;
-  right: 760px; 
+  right: 860px; 
 }
 .box{
   z-index: 2;
   top: 280px;
-  right: 980px; 
+  right: 1080px; 
 }
 .box:hover{
   cursor: pointer;
@@ -275,7 +274,7 @@
 .coin1 {
   z-index: 1;
   top: 280px;
-  right: 985px;
+  right: 1085px;
 }
 .splash-buttons{
   display: flex;
@@ -298,7 +297,41 @@
   background-color: #fff;
   color:  #7289da;
 }
-
+.splash-footer{
+  display:flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 10px;
+  color: white;
+  margin-top:50%;
+}
+.splash-footer > div{
+  position:relative;
+  left: 50px;
+}
+footer > div > h2{
+    color: white;
+    font-size: 26px;
+    line-height: 34px;
+}
+footer > div > h3{
+    color: rgba(255,255,255,.75);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+.splash-footer > a{
+  background-color: #7289da;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  height: 15px;
+  line-height: 15px;
+  padding: 16px;
+  position: relative;
+  right: 50px;
+}
 
 @keyframes dropDown{
 0%{

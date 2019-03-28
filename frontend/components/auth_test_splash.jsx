@@ -17,7 +17,6 @@ class Splash extends React.Component {
 
   mouseOutDropDown() {
     this.setState({ dropped: false, chaching: false, clickEnabled: true});
-    // document.getElementsByClassName("splash-drop-down").className("fading-out")
   }
   chaching(){
     if(this.state.clickEnabled){
@@ -122,7 +121,14 @@ class Splash extends React.Component {
             <img className="box" onClick={this.chaching} src={window.box} />
             <img className="headset" src={window.headset} />
           </div>
+
           <footer className="splash-footer">
+            <div>
+              <h2>Ready to try Discoded? It's free!</h2>
+              <h3>JOIN OVER 250 MILLION PLAYERS TODAY</h3>
+            </div>
+            <Link className="footer-signup-link" to='/signup'>Sign Up</Link>
+
           </footer>
 
         </div>
