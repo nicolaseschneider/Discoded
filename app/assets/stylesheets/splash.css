@@ -134,10 +134,11 @@
 }
 .splash-art{
   position: relative;
+  margin:0 auto;
+  display: block;
 }
 .t {
   opacity: .3;
-
 }
 
 .splash-art > img{

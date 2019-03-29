@@ -11,7 +11,7 @@ const receiveServer = server => ({
   server,
 });
 const receiveServers = servers => ({
-  type: RECEIVE_ALL_SERVER,
+  type: RECEIVE_ALL_SERVERS,
   servers,
 });
 

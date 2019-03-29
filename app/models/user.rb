@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
     has_many :servers,
         through: :memberships,
+        source_type: "Server",
         source: :location
         
     def self.find_by_credentials(username, password)

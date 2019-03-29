@@ -12,4 +12,6 @@ class ServersController < ApplicationController
       render json: ['Invalid server code'], status: 404
     end
   end
+
+  
 end

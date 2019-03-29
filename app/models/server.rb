@@ -17,25 +17,27 @@ class Server < ApplicationRecord
 
 
   def ensure_invite_url
-    @invite_code ||= Server.generate_invite_url
+    self.invite_code ||= Server.generate_invite_url
   end
 
 
   def self.generate_invite_url
     code = SecureRandom.hex.slice(0..7)
-    code
   end
   
   def reset_invite_url!
     self.invite_code = Server.generate_invite_url
+    self.save!
     self.invite_code
   end
 
   def ensure_invite_expires
-    if !@invite_expires || self.invite_expires > Time.now
-      self.reset_invite_url!
+
+    unless self.invite_expires && self.invite_expires > Time.now
       self.invite_expires = Time.now + 86400
+      self.reset_invite_url!
       self.invite_expires
+
     else
       self.invite_expires
     end

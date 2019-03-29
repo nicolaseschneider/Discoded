@@ -39,7 +39,7 @@ class SessionForm extends React.Component{
   render () {
     let passEmpt = 'Password';
     let userEmpt = 'Username';
-    let emailEmpt = 'Email'
+    let emailEmpt = 'Email';
     const parseErrors = (errors) => {
       for (let i = 0; i < errors.length; i++){
 
