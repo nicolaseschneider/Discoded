@@ -4,8 +4,8 @@ class ServersController < ApplicationController
   def show
     @server = Server.find_by(invite_code: params[:id])
     if logged_in? && @server
-      Membership.create({current_user.id, @server})
-      redirect_to root_url +"/#/@me"
+      Membership.create({user: current_user, location: @server})
+      redirect_to root_url
     elsif !logged_in?
       redirect_to root_url+"/#/login"
     else

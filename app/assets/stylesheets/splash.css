@@ -197,8 +197,8 @@
 }
 .computer{
   z-index: 3;
-  top: 45vh;
-  right: 35vw; 
+  top: 360px;
+  right: 690px; 
 }
 .x1{
  top: 293px;
@@ -220,12 +220,12 @@
 }
 .phone1{
   z-index: 4;
-  top: 72.5vh;
+  top: 580px;
   right: 1270px; 
 }
 .phone2{
   z-index: 4;
-  top: 71.5vh;
+  top: 573px;
   right: 1430px; 
 }
 .controller{
@@ -287,7 +287,7 @@
   margin: 10px;
 }
 .splash-buttons > a:hover{
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 .login-link{
   background-color: #7289da;
@@ -295,7 +295,7 @@
 }
 .signup-link{
   background-color: #fff;
-  color:  #26262b;
+  color:  #7289da;
 }
 .splash-footer{
   display:flex;
@@ -331,7 +331,6 @@ footer > div > h3{
   padding: 16px;
   position: relative;
   right: 50px;
-  margin-bottom: 15px;
 }
 
 @keyframes dropDown{

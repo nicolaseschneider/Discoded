@@ -23,7 +23,7 @@ class Server < ApplicationRecord
 
   def self.generate_invite_url
     code = SecureRandom.hex.slice(0..7)
-    "/invite/" + code
+    code
   end
   
   def reset_invite_url!
