@@ -197,8 +197,8 @@
 }
 .computer{
   z-index: 3;
-  top: 360px;
-  right: 690px; 
+  top: 45vh;
+  right: 35vw; 
 }
 .x1{
  top: 293px;
@@ -220,12 +220,12 @@
 }
 .phone1{
   z-index: 4;
-  top: 580px;
+  top: 72.5vh;
   right: 1270px; 
 }
 .phone2{
   z-index: 4;
-  top: 573px;
+  top: 71.5vh;
   right: 1430px; 
 }
 .controller{

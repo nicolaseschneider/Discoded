@@ -6,7 +6,8 @@ class Server < ApplicationRecord
   belongs_to :creator,
     class_name: "User"
 
-  has_many :memberships :as => :location
+  has_many :memberships,
+    as: :location
 
   has_many :users,
     through: :memberships,
@@ -15,8 +16,8 @@ class Server < ApplicationRecord
   after_initialize :ensure_invite_url, :ensure_invite_expires
 
 
-  def ensure_invite_code
-    (@invite_code && @invite_expires > Time.now ||= Server.generate_invite_code
+  def ensure_invite_url
+    @invite_code ||= Server.generate_invite_url
   end
 
 
@@ -24,9 +25,20 @@ class Server < ApplicationRecord
     code = SecureRandom.hex.slice(0..7)
     "/invite/" + code
   end
+  
+  def reset_invite_url!
+    self.invite_code = Server.generate_invite_url
+    self.invite_code
+  end
 
   def ensure_invite_expires
-    (@invite_expires && @invite_expires > Time.now) ||= Time.now + 86400
+    if !@invite_expires || self.invite_expires > Time.now
+      self.reset_invite_url!
+      self.invite_expires = Time.now + 86400
+      self.invite_expires
+    else
+      self.invite_expires
+    end
   end
 
 
