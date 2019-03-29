@@ -77,7 +77,12 @@
   height: 44px;
 }
     
-
+.session-input:hover{
+  border: #040405  1px solid;
+}
+.bad-input{
+  border:1px solid rgb(237,61,72);
+}
 .session-input:focus {
   outline: none;
   caret-color: white;
@@ -86,12 +91,6 @@
 }
 .session-submit:hover{
   background-color: #6578bf;
-}
-.session-input:hover{
-  border: #040405  1px solid;
-}
-.bad-input{
-  border:1px solid rgb(237,61,72);
 }
 .bad-label{
   color: rgb(237,61,72);

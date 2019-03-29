@@ -287,7 +287,7 @@
   margin: 10px;
 }
 .splash-buttons > a:hover{
-  transform: translateY(3px);
+  transform: translateY(2px);
 }
 .login-link{
   background-color: #7289da;
@@ -295,7 +295,7 @@
 }
 .signup-link{
   background-color: #fff;
-  color:  #7289da;
+  color:  #26262b;
 }
 .splash-footer{
   display:flex;
@@ -331,6 +331,7 @@ footer > div > h3{
   padding: 16px;
   position: relative;
   right: 50px;
+  margin-bottom: 15px;
 }
 
 @keyframes dropDown{
