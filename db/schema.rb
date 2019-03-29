@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_000356) do
+ActiveRecord::Schema.define(version: 2019_03_29_205605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channel_subscriptions", force: :cascade do |t|
+    t.integer "chat_channel_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "is_direct_message", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.integer "server_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id", null: false

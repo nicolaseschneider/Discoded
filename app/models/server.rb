@@ -2,6 +2,7 @@ class Server < ApplicationRecord
   validates :name, :creator_id, presence: true
   validates :invite_code, presence: true
   
+  has_many :channels
 
   belongs_to :creator,
     class_name: "User"

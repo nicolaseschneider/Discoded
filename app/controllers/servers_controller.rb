@@ -7,7 +7,7 @@ class ServersController < ApplicationController
       Membership.create({user: current_user, location: @server})
       redirect_to root_url
     elsif !logged_in?
-      redirect_to root_url+"/#/login"
+      redirect_to  "#{root_url}/#/@me/#{current_user.id}"
     else
       render json: ['Invalid server code'], status: 404
     end

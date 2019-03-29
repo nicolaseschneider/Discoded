@@ -14,3 +14,7 @@
  *= require_self
  */
 /* fonts */
+
+*{
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
