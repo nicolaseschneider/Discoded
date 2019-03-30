@@ -10,11 +10,11 @@ export default (state = {}, action) => {
       return action.servers;
 
     case RECEIVE_SERVER:
-      newServer = {[action.server.id]: action.user};
+      const newServer = {[action.server.id]: action.server};
       return merge({},state,newServer);
 
     case REMOVE_SERVER:
-      newState = Object.assign({},state);
+      const newState = Object.assign({},state);
       delete(newState[action.serverId]);
       return newState;
 

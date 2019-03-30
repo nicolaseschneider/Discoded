@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { createServer } from '../../../actions/server_actions';
 import ServerIndex from './server_index';
 import { openDefServerModal,closeModal, openJoinServerModal, openCreateServerModal } from '../../../actions/ui_actions';
+import { getServers } from '../../../actions/server_actions';
 
 
 const msp = state => ({
@@ -15,7 +16,8 @@ const mdp = dispatch => ({
   openDefModal: () => dispatch(openDefServerModal),
   closeModal: () => dispatch(closeModal),
   openJoinModal: () => dispatch(openJoinServerModal),
-  openCreateServerModal: () => dispatch(openCreateServerModal)
+  openCreateServerModal: () => dispatch(openCreateServerModal),
+  getServers: ()=> dispatch(getServers())
 });
 
 export default connect(msp, mdp)(ServerIndex);

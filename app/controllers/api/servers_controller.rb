@@ -11,8 +11,8 @@ class Api::ServersController < ApplicationController
   end
 
   def create
-    @server = Server.new(server_params)
-    @server.creator_id = current_user.id
+
+    @server = Server.new(server_params.merge({creator: current_user}))
     if @server.save
       @server.users << current_user
       render :show

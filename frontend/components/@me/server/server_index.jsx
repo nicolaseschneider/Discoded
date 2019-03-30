@@ -13,10 +13,14 @@ class ServerIndex extends React.Component {
     this.modalON = this.modalON.bind(this);
     this.modalOFF = this.modalOFF.bind(this);
   }
+  componentDidMount(){
+    this.props.getServers();
+  }
   modalON(){ 
     this.setState({ modal: true }, () => this.props.openDefModal()); 
   }
-  modalOFF(){ 
+  modalOFF(e){ 
+    e.stopPropagation();
     this.props.closeModal();
     this.setState({modal: false}); 
   }
@@ -37,8 +41,8 @@ class ServerIndex extends React.Component {
       case 'create server':
 
         modal = <div onClick={this.modalOFF} className="modal-screen">
-          <strong className="form-container">
-            <CreateServer openDefModal={this.props.openDefModal} 
+          <strong  className="form-container">
+            <CreateServer openDefModal={this.props.openDefModal} closeModal={this.props.closeModal} 
             createServer={this.props.createServer} />
           </strong>
         </div>
