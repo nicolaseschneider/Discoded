@@ -31,3 +31,9 @@ export const createServer = (server) => {
     data: { server }
   });
 };
+
+export const joinServer = (invite_code) => {
+  return $.ajax({
+    url: `/servers/${invite_code}`
+  });
+};

@@ -10,34 +10,37 @@ class JoinServerModal extends React.Component {
       code: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateName = this.updateName.bind(this);
+    this.updateCode = this.updateCode.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.createServer(this.state);
+    this.props.joinServer(this.state.code);
   }
 
-  updateName(e) {
+  updateCode(e) {
     e.preventDefault();
-    this.setState({ name: e.target.value });
+    this.setState({ code: e.target.value });
   }
   render() {
-    <div className="join-server-wrapper">
-      <header className="join-server-header">
-        <h1> CREATE YOUR SERVER </h1>
-        <h2>By creating a server, you will have access to free voice and text chat to use amongst your friends</h2>
-      </header>
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          <input type="text" placeholder="Enter a server name" onChange={this.updateName} value={this.state.name} />
-          Enter an instant invite
-        </label>
-        <button> BACK </button>
-        <input type="submit" value="Join" />
+    return (
+        <div onClick={(e) => e.stopPropagation()} className="join-server-wrapper">
+        <header className="join-server-header">
+          <h1> JOIN A SERVER </h1>
+          <h2>Enter your instant invite code below to join an existing server.</h2>
+        </header>
 
-      </form>
-    </div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <input type="text" onChange={this.updateCode} value={this.state.code} />
+            Enter an invite code
+          </label>
+          <a onClick={this.props.openDefModal}> BACK </a>
+          <input type="submit" value="Join" />
+
+        </form>
+      </div>
+    )
 
 
 

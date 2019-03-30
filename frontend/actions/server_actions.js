@@ -24,6 +24,12 @@ const receiveErrors = errors => ({
   type: RECEIVE_SERVER_ERRORS,
   errors,
 });
+
+
+export const joinServer = invite_code => dispatch => APIServerUtil.joinServer(invite_code)
+  .then(server => dispatch(receiveServer(server)),
+  errors => dispatch(receiveErrors(errors)));
+  
 export const getServer = serverId => dispatch => APIServerUtil.getServer(serverId)
   .then(server => dispatch(receiveServer(server)),
     errors => dispatch(receiveErrors(errors)));

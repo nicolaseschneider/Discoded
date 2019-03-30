@@ -34,7 +34,7 @@ class CreateServer extends React.Component {
         <label>SERVER NAME
           <input type="text" placeholder="Enter a server name" onChange={this.updateName} value={this.state.name} />
         </label>
-        <button> BACK </button>
+        <a onClick={this.props.openDefModal}> BACK </a>
         <input type="submit" value="Create" />
 
       </form>

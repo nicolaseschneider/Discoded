@@ -3,6 +3,7 @@ import React from 'react';
 import ServerIndexItem from './server_index_item';
 import DefaultModal from './default_modal';
 import CreateServer from './create_server';
+import JoinServer from './join_modal';
 class ServerIndex extends React.Component {
 
   constructor(props){
@@ -38,6 +39,7 @@ class ServerIndex extends React.Component {
           </div>
         </div>
         break
+
       case 'create server':
 
         modal = <div onClick={this.modalOFF} className="modal-screen">
@@ -47,7 +49,17 @@ class ServerIndex extends React.Component {
           </strong>
         </div>
         break
-      // case 'join server':
+
+      case 'join server':
+
+        modal = <div onClick={this.modalOFF} className="modal-screen">
+          <strong className="form-container">
+            <JoinServer openDefModal={this.props.openDefModal} closeModal={this.props.closeModal}
+            joinServer={this.props.joinServer} />
+          </strong>
+        </div>
+        break
+
       default:
         modal = ""
         break

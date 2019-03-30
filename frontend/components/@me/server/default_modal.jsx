@@ -12,16 +12,20 @@ export default ({ openJoinModal, openCreateServerModal }) => {
 
             <h2>CREATE</h2>
             <p>Create a new server and invite your friends. It's free!</p>
-            <img src={window.create} />       
+            <div className="action-create icon"> </div>       
             <button>Create a server</button>
 
           </span>
-          <img class-namesrc={window.def_middle} />
+{/* 
+          <div className="divide">
+            or
+          </div> */}
+
           <span className='server-action server-join' onClick={openJoinModal}>
 
             <h2>JOIN</h2>
             <p>Enter an instant invite and join your friend's server.</p>
-            <img src={window.join} />
+            <div className="action-join icon">  </div>
             <button>Join a server</button>
 
           </span>

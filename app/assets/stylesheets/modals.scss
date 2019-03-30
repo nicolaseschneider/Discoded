@@ -1,0 +1,129 @@
+.modal-screen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .85);
+
+}
+.default-server-modal{
+  background: #fff;
+  padding: 34px 40px;
+  height: 420px;
+  width: 536px;
+  background-position: 0 100%,100% 100%;
+  background-repeat: no-repeat;
+  background-size: 155px auto, 75px auto;
+  box-sizing: border-box;
+  transition: transform .25s ease;
+  background-image: image_url('leftsidetrans.png'),image_url('rightsidetrans.png');
+}
+.modal-screen input{
+  color: black;
+}
+.form-container{
+  position: relative;
+  z-index: 5;
+}
+.default-server-modal h1{
+  color: #7289da;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-align: center;
+  
+}
+.server-actions h2{
+
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.server-create > h2{
+  color: #7289da
+}
+.server-join > h2{
+  color: #3ca374;
+}
+.server-actions p{
+  color: #99aab5;
+  font-size: 14px;
+  line-height: 20px;;
+  margin-top: 16px;
+  padding: 0 15px;
+  text-align: center;
+  
+}
+.action-create{
+  background-image: image_url("create.png");
+  background-size: 112px 78px;
+}
+.action-join{
+  background-image: image_url("join.png");
+  background-size: 178.5px 78px;
+}
+.icon{
+  
+  height: 78px;
+  width: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  margin: 26px auto;
+}
+.server-create{
+  color: #2f3d70;
+}
+.server-action button{
+  color: #fff;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 14px 20px;
+  width: 100%;
+  outline: 0;
+  border: none;
+  transition: background-color .2s ease;
+}
+
+.divide{
+  background-image: image_url('defaultmid.svg');
+}
+.server-create button{
+  background-color: #7289da;
+}
+.server-join button{
+  background-color: #3ca374
+}
+.server-actions{
+  z-index: 12;
+  display:flex;
+  align-content: center;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.server-action{
+  display:flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden;
+  background-color: white;
+  cursor: pointer;
+  width: 228px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  text-align: center;
+
+}
+
+.server-join{
+  color: #3ca374;
+  margin-left: 16px;
+}
