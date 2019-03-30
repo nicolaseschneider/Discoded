@@ -134,8 +134,10 @@
 }
 .splash-art{
   position: relative;
-  margin:0 auto;
-  display: block;
+  margin: 0 auto;
+  max-width: 2160px;
+  min-width: 1700px;
+  height: 900px;
 }
 .t {
   opacity: .3;
@@ -199,7 +201,7 @@
 .computer{
   z-index: 3;
   top: 360px;
-  right: 690px; 
+  right: 800px; 
 }
 .x1{
  top: 293px;
@@ -212,27 +214,27 @@
 .laptop{
   z-index: 4;
   top: 480px;
-  right: 200px; 
+  right: 350px; 
 }
 .headset{
   z-index: 5;
   top: 457px;
-  right: 260px; 
+  right: 420px; 
 }
 .phone1{
   z-index: 4;
   top: 580px;
-  right: 1270px; 
+  right: 1390px; 
 }
 .phone2{
   z-index: 4;
   top: 573px;
-  right: 1430px; 
+  right: 1560px; 
 }
 .controller{
   z-index: 4;
   top: 720px;
-  right: 1080px; 
+  right: 1280px; 
 }
 .movin{
   z-index: 2;
@@ -242,19 +244,19 @@
 .bomb{
   z-index: 1;
   top: 260px;
-  right: 1300px; 
+  right: 1340px; 
   animation: moving 5s infinite .05s ease-in-out;
 }
 
 .cartridge{
   z-index: 2;
   top: 310px;
-  right: 590px; 
+  right: 700px; 
 }
 .coin3{
   z-index: 2;
   top: 290px;
-  right: 1260px; 
+  right: 1290px; 
 }
 .coin2{
   z-index: 2;
@@ -304,7 +306,7 @@
   position: relative;
   bottom: 10px;
   color: white;
-  margin-top:50%;
+  margin-top:50px;
 }
 .splash-footer > div{
   position:relative;
