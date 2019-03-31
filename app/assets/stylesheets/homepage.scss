@@ -4,20 +4,38 @@
   height: 100%;
   display: flex;
 
-}
 
+}
+::-webkit-scrollbar{
+width:4px;
+}
+::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.4);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,.8); 
+}
 .server-bar{
-  display:flex;
-  overflow-x: hidden;
-  flex-direction: column;
-  padding: 10px 0 0 10px;
   height: 100%;
   width: 70px;
+  display:flex;
+  flex-direction: column;
+  padding: 10px 0 0 10px;
   background-color: #202225;
   box-sizing: border-box; 
+  overflow-x: scroll;
 }
 ul{
   list-style: none;
+}
+.server-divide{
+  height: 3px;
+  width: 35px;
+  background: #2f3136;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  margin-left: 9px;
 }
 .server-bar li:hover{
   cursor: pointer;
@@ -40,11 +58,8 @@ ul{
   background-color: #2f3136;
   border-radius: 50%;
   transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 50%;
 }
-.add-server{
+.add-server, .log-out{
   display:flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +79,28 @@ ul{
   border-color: rgba(255,255,255,.9);
   color: rgba(255,255,255,.9)
 }
+.server-name{
+  color: rgba(255,255,255,.9);
+  background-color: black;
+  position: relative;
+  top: -49px;
+  left: 55px;
+  z-index: 2;
+  max-width: 300px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  padding: 8px 11px;
+  white-space: nowrap;
+  z-index: 2;
+  visibility: hidden;
+}
 .server-icon:hover, .server-bar-logo:hover{
   border-radius: 15px;
   background-color: rgba(255,255,255,.45);
+
+  .server-name {
+    visibility: visible
+  }
 }

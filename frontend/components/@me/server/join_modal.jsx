@@ -35,8 +35,10 @@ class JoinServerModal extends React.Component {
             <input type="text" onChange={this.updateCode} value={this.state.code} />
             Enter an invite code
           </label>
-          <a onClick={this.props.openDefModal}> BACK </a>
-          <input type="submit" value="Join" />
+          <div className="join-footer">
+            <a onClick={this.props.openDefModal}> BACK </a>
+            <input type="submit" value="Join" />
+          </div>
 
         </form>
       </div>

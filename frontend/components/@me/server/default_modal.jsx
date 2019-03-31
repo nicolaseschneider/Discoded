@@ -3,7 +3,7 @@ import React from 'react';
 
 export default ({ openJoinModal, openCreateServerModal }) => {
   return (
-    <div onClick={(e)=>e.stopPropagation()} className="default-server-modal">
+    <div onClick={(e)=>e.stopPropagation()} className="default-server-modal server-modal">
 
           <h1>OH, ANOTHER SERVER HUH?</h1>
         
@@ -16,10 +16,7 @@ export default ({ openJoinModal, openCreateServerModal }) => {
             <button>Create a server</button>
 
           </span>
-{/* 
-          <div className="divide">
-            or
-          </div> */}
+
 
           <span className='server-action server-join' onClick={openJoinModal}>
 
@@ -30,6 +27,7 @@ export default ({ openJoinModal, openCreateServerModal }) => {
 
           </span>
 
+        <div className="divide">or</div>
         </div>    
     </div>
   )

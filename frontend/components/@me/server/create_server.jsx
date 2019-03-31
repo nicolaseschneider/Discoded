@@ -31,11 +31,24 @@ class CreateServer extends React.Component {
         <h2>By creating a server, you will have access to free voice and text chat to use amongst your friends</h2>
       </header>
       <form onSubmit={this.handleSubmit}>
-        <label>SERVER NAME
-          <input type="text" placeholder="Enter a server name" onChange={this.updateName} value={this.state.name} />
-        </label>
-        <a onClick={this.props.openDefModal}> BACK </a>
-        <input type="submit" value="Create" />
+        <div className="create-holder">
+
+          <div className="create-name">
+            <h3>
+              SERVER NAME
+            </h3>
+            <input type="text" placeholder="Enter a server name" onChange={this.updateName} value={this.state.name} />
+          </div>
+
+          <div className="create-avatar">
+            <div className="server-avatar"></div>
+          
+          </div>
+        </div>
+        <div className="create-footer"> 
+          <a onClick={this.props.openDefModal}> BACK </a>
+          <input type="submit" value="Create" />
+        </div>
 
       </form>
     </div>)

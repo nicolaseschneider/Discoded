@@ -78,8 +78,10 @@ class ServerIndex extends React.Component {
           <li onClick={this.modalON} className="add-server">
             +
           </li>
+          <li onClick={this.props.logout} className="add-server">
+            <i className="fas fa-sign-out-alt"></i>
+          </li>
 
-          <div className="server-divide"></div>
         </ul>
       </div>
     )

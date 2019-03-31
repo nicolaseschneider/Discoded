@@ -26,7 +26,6 @@ class HomePage extends React.Component {
         
 
         <h1> WELCOME {this.props.user.username} </h1>
-        <button onClick={this.props.logout}>LOGOUT</button>
 
       </div>
     
