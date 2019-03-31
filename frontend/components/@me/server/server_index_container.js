@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import { createServer, joinServer } from '../../../actions/server_actions';
+import { createServer, joinServer, getServers, selectServer } from '../../../actions/server_actions';
 import ServerIndex from './server_index';
 import { openDefServerModal,closeModal, openJoinServerModal, openCreateServerModal } from '../../../actions/ui_actions';
-import { getServers } from '../../../actions/server_actions';
 import { logout } from '../../../actions/session_actions';
 
 
@@ -20,7 +19,8 @@ const mdp = dispatch => ({
   openCreateServerModal: () => dispatch(openCreateServerModal),
   getServers: ()=> dispatch(getServers()),
   joinServer: (invite) => dispatch(joinServer(invite)),
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  selectServer: (id) => dispatch(selectServer(id))
 });
 
 export default connect(msp, mdp)(ServerIndex);

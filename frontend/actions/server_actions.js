@@ -3,7 +3,7 @@ export const RECEIVE_SERVER = 'RECEIVE_SERVER';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
 export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
-
+export const SELECT_SERVER = 'SELECT_SERVER';
 
 
 const receiveServer = server => ({
@@ -25,6 +25,10 @@ const receiveErrors = errors => ({
   errors,
 });
 
+export const selectServer = (id) => ({
+  type: SELECT_SERVER,
+  id,
+})
 
 export const joinServer = invite_code => dispatch => APIServerUtil.joinServer(invite_code)
   .then(server => dispatch(receiveServer(server)),

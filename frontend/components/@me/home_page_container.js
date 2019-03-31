@@ -8,6 +8,7 @@ import homePage from './home_page';
 const msp = (state, ownProps) =>({
   userId: ownProps.match.params.userId,
   user: state.entities.users[ownProps.match.params.userId] || {},
+  server: state.ui.server.id
 });
 
 const mdp = dispatch => ({

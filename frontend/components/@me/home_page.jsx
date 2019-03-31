@@ -21,7 +21,9 @@ class HomePage extends React.Component {
         <aside className="server-bar">
           <ServerIndexContainer />
         </aside>
-          <aside className="channel-bar">
+
+        <aside className="server-detail">
+        {/* Here should go the server-display */}
         </aside>
         
 

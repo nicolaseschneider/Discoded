@@ -2,7 +2,6 @@ import {DEFAULT_SERVER_MODAL,CLOSE_MODAL, CREATE_SERVER_MODAL, JOIN_SERVER_MODAL
 import { RECEIVE_SERVER } from '../../actions/server_actions';
 
 export default (state = null, action) => {
-
   Object.freeze(state);
   switch(action.type){
     case DEFAULT_SERVER_MODAL:

@@ -64,7 +64,13 @@ class ServerIndex extends React.Component {
         modal = ""
         break
     }
-    const indexList = this.props.servers.map(server => <ServerIndexItem key={server.invite_code} server={server} />)
+    const indexList = this.props.servers.map(server => 
+      <ServerIndexItem 
+        key={server.invite_code} 
+        server={server} 
+        select={this.props.selectServer} 
+      />
+    )
     return (
       <div>
         {modal}
