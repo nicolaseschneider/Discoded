@@ -9,6 +9,7 @@ Channel.destroy_all
 Server.destroy_all
 Membership.destroy_all
 User.destroy_all
+Message.destroy_all
 
 
 nicolas = User.create!({username: 'Karateman', password: 'Glubgluby', email: 'nicolas.e.schneider@vanderbilt.edu'})

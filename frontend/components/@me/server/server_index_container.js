@@ -10,6 +10,7 @@ const msp = (state) => {
   servers: Object.values(state.entities.servers),
   modal: state.ui.modal,
   selected: state.ui.server.id,
+  user: state.session.currentUser
 
 } };
 

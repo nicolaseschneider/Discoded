@@ -9,13 +9,12 @@ import channel_index_container from './@me/server/channels/channel_index_contain
 
 const App = () => (
   <div className='app'>
-    <Switch>
+
       <AuthRouteLoggedOut path="/login" component={LoginFormContainer} />
       <AuthRouteLoggedOut path="/signup" component={SignUpFormContainer} />
       <Route exact path="/" component={Splash} />
       <AuthRouteLoggedIn path="/@me/:userId" component={HomePageContainer} />
-      <AuthRouteLoggedIn path="/@me/:userId/:serverId" component={channel_index_container} />
-    </Switch>
+
   </div>
 );
 

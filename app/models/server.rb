@@ -26,8 +26,8 @@ class Server < ApplicationRecord
     if self.channels.length == 0
       self.channels << Channel.create({server: self, users:[self.creator], name: "General Chat"})
     end
-
   end
+  
   def self.generate_invite_url
     code = SecureRandom.hex.slice(0..7)
   end

@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
   resources :servers, default: :json, only: :show
   root to: 'static_pages#root'
+  mount ActionCable.server, at: '/channel'
+  
 end

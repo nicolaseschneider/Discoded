@@ -16,19 +16,21 @@
   background: rgba(255,255,255,.8); 
 }
 .server-bar{
-  height: 100%;
+  height: 100vh;
   width: 70px;
+  position: relative;
   display:flex;
   flex-direction: column;
   padding: 10px 0 0 10px;
   background-color: #202225;
   box-sizing: border-box; 
-  overflow-y: scroll;
-  overflow-x: visible;
+
 }
+
 ul{
   list-style: none;
 }
+
 .server-divide{
   height: 3px;
   width: 35px;
@@ -37,6 +39,7 @@ ul{
   margin-bottom: 15px;
   margin-left: 9px;
 }
+
 .server-bar li:hover{
   cursor: pointer;
 }
@@ -47,10 +50,10 @@ ul{
   background-color: white;
 }
 .server-icon, .server-bar-logo{
+  z-index:1;
   height: 50px;
   width: 50px;
   margin-top: 8px;
-  position: relative;
   font-size: 18px;
   line-height: 50px;
   text-align: center;
@@ -82,12 +85,11 @@ ul{
 }
 .server-name{
   color: rgba(255,255,255,.9);
-  background-color: black;
-  position: relative;
-  top: -49px;
+  background-color: RGBA(0,0,0,1);
+  position: absolute;
+  top: 8px;
   left: 55px;
- visibility: hidden;
-
+  visibility: hidden;
   max-width: 300px;
   border-radius: 5px;
   font-size: 14px;
@@ -95,12 +97,9 @@ ul{
   line-height: 14px;
   padding: 8px 11px;
   white-space: nowrap;
-  z-index: 90123123;
+  z-index: 91123123;
 }
 
-.server-holder{
-  overflow-x:visible;
-}
 .server-icon:hover, .server-bar-logo:hover{
   border-radius: 15px;
   background-color: rgba(255,255,255,.45);
@@ -108,4 +107,27 @@ ul{
   .server-name {
     visibility: visible
   }
+}
+
+.active > li{
+  border-radius: 15px;
+  background-color: rgba(255,255,255,.45);
+}
+.server-bar ul{
+  position: relative;
+  width: 80vw;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.server-bar > div{
+  height:100%;
+}
+.server-bar > div > ul > a{
+  z-index: 1;
+  max-width: 50px;
+}
+.server-bar > div > ul > a > li{
+  position: relative;
+  max-width: 50px;
 }

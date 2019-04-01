@@ -69,14 +69,15 @@ class ServerIndex extends React.Component {
         key={server.invite_code} 
         server={server} 
         select={this.props.selectServer} 
-        sId={this.props.selected}
-        uId={this.props.currUser}
+        uId={this.props.user}
       />
     )
     return (
       <div>
         {modal}
+      
         <ul>
+
           <li>
             <img className="server-bar-logo" src={window.logoURL}></img>
           </li>
@@ -89,8 +90,9 @@ class ServerIndex extends React.Component {
           <li onClick={this.props.logout} className="add-server">
             <i className="fas fa-sign-out-alt"></i>
           </li>
-
+          
         </ul>
+        
       </div>
     )
   }
