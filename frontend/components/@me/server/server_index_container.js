@@ -5,11 +5,13 @@ import { openDefServerModal,closeModal, openJoinServerModal, openCreateServerMod
 import { logout } from '../../../actions/session_actions';
 
 
-const msp = state => ({
+const msp = (state) => {
+  return {
   servers: Object.values(state.entities.servers),
-  modal: state.ui.modal
+  modal: state.ui.modal,
+  selected: state.ui.server.id,
 
-});
+} };
 
 const mdp = dispatch => ({
   createServer: server => dispatch(createServer(server)),

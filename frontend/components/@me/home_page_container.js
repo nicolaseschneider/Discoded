@@ -1,7 +1,7 @@
-import { getServers } from '../../actions/server_actions';
+import { getServers, selectServer } from '../../actions/server_actions';
 import { getUser } from '../../actions/user_actions';
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router-dom';
 import homePage from './home_page';
 
 
@@ -14,7 +14,8 @@ const msp = (state, ownProps) =>({
 const mdp = dispatch => ({
   getServers: () => dispatch(getServers()),
   getUser: (id) => dispatch(getUser(id)),
+  selectServer: (id) => dispatch(selectServer(id))
 
 });
 
-export default connect(msp,mdp)(homePage);
+export default withRouter(connect(msp,mdp)(homePage));

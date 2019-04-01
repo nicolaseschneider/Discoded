@@ -16,6 +16,11 @@ class User < ApplicationRecord
         through: :memberships,
         source_type: "Server",
         source: :location
+
+    has_many :channels,
+        through: :memberships,
+        source_type: "Channel",
+        source: :location
         
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)

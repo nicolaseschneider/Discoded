@@ -1,13 +1,14 @@
 import React from 'react';
 import ServerIndexContainer from './server/server_index_container';
-
+import ChannelIndexContainer from '../@me/server/channels/channel_index_container';
  
 class HomePage extends React.Component {
   constructor(props){
     super(props);
   }
+
   componentDidMount(){
-    this.props.getUser(this.props.userId);
+    this.props.getUser(this.props.userId)
     
   }
 
@@ -23,7 +24,7 @@ class HomePage extends React.Component {
         </aside>
 
         <aside className="server-detail">
-        {/* Here should go the server-display */}
+          <ChannelIndexContainer />
         </aside>
         
 

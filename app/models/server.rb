@@ -4,6 +4,7 @@ class Server < ApplicationRecord
   
   has_many :channels
 
+
   belongs_to :creator,
     class_name: "User"
 
@@ -14,14 +15,19 @@ class Server < ApplicationRecord
     through: :memberships,
     source: :user
 
-  after_initialize :ensure_invite_url, :ensure_invite_expires
-
+  after_initialize :ensure_invite_url, :ensure_invite_expires, :ensure_base_channel
+  
 
   def ensure_invite_url
     self.invite_code ||= Server.generate_invite_url
   end
 
+  def ensure_base_channel
+    if self.channels.length == 0
+      self.channels << Channel.create({server: self, users:[self.creator], name: "General Chat"})
+    end
 
+  end
   def self.generate_invite_url
     code = SecureRandom.hex.slice(0..7)
   end

@@ -4,7 +4,6 @@ const _nullselected ={
   id: null
 }
 export default (state = _nullselected, action) => {
- debugger
   Object.freeze(state);
   switch(action.type){
     case SELECT_SERVER:

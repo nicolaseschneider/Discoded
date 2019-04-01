@@ -69,6 +69,8 @@ class ServerIndex extends React.Component {
         key={server.invite_code} 
         server={server} 
         select={this.props.selectServer} 
+        sId={this.props.selected}
+        uId={this.props.currUser}
       />
     )
     return (
