@@ -5,7 +5,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import Splash from './Auth_test_container';
 import { Route, Switch } from 'react-router-dom';
 import HomePageContainer from './@me/home_page_container';
-import channel_index_container from './@me/server/channels/channel_index_container';
+
 
 const App = () => (
   <div className='app'>
@@ -19,5 +19,3 @@ const App = () => (
 );
 
 export default App;
-
-//<AuthRouteLoggedIn path='/@me/:userId/:serverId` component={ChannelIndexContainer} />

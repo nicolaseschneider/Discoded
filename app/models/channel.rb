@@ -10,6 +10,8 @@ class Channel < ApplicationRecord
   has_many :users,
     through: :memberships,
     source: :user
+    
+  has_many :messages
 
   after_initialize :ensure_members
 

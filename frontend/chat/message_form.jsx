@@ -3,16 +3,21 @@ import React from 'react';
 class MessageForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body: ""}
+    this.state = {body: ""};
   }
 
   update(field){
-    return e => this.setState({[field]: e.currentTarget.value });
+    return e => this.setState({ [field]: e.currentTarget.value});
   }
   handleSubmit(e){
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body });
-    this.setState({body: "" });
+
+    App.cable.subscriptions.subscriptions[0].speak({
+       message: this.state.body, 
+       channel_id: this.props.cID,
+       author_id: this.props.user.id
+      });
+    this.setState({ body: ""});
   }
 
   render(){
@@ -23,7 +28,7 @@ class MessageForm extends React.Component{
             type="text"
             onChange={this.update("body")}
             value={this.state.body}
-            placeholder = "Message #General Chat"
+            placeholder = "Message the channel"
           />
           <input type="submit" />
         </form>

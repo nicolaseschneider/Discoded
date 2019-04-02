@@ -1,7 +1,7 @@
 class Api::ChannelsController < ApplicationController
 
     def index
-        server = Server.find(params[:id])
+        server = Server.includes(:channels).find(params[:id])
         @channels = server.channels
         render :index
     end

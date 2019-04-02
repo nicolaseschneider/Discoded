@@ -1,23 +1,31 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    stream_for 'chat_channel'
-    load
+    puts params
+    channel = Channel.find(params[:id])
+    stream_for channel
+    load(params[:id])
   end
   def speak(data)
-    message = Message.new(body: data['message'])
+
+    message = Message.new(body: data['message'], channel_id: data['channel_id'], author_id: data['author_id'])
+    channel = Channel.find(data['channel_id'])
     if message.save
-      socket = { message: message.body, type: 'message' }
-      ChatChannel.broadcast_to('chat_channel', socket)
+      socket = { author: message.author.username, message: message.body, type: 'message' }
+      ChatChannel.broadcast_to(channel, socket)
     end
-    load
   end
 
-  def load
-    messages = Message.all.collect(&:body)
+  def load(id)
+
+    channel = Channel.includes(:messages).find(id)
+    messages = channel.messages.collect(&:body)
     socket = {messages: messages, type: 'messages' }
-    ChatChannel.broadcast_to('chat_channel', socket)
+    ChatChannel.broadcast_to(channel, socket)
+  end
+  
+  def unsubscribed
+
   end
 
-  def unsubscribed
-  end
+ 
 end

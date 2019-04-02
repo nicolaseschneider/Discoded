@@ -22,6 +22,8 @@ class User < ApplicationRecord
         source_type: "Channel",
         source: :location
         
+    has_many :messages
+        
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         user && user.is_password?(password) ? user :nil

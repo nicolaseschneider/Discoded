@@ -68,7 +68,6 @@ class ServerIndex extends React.Component {
       <ServerIndexItem 
         key={server.invite_code} 
         server={server} 
-        select={this.props.selectServer} 
         uId={this.props.user}
       />
     )

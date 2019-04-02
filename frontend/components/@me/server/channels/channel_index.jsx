@@ -1,7 +1,5 @@
 import React from 'react';
-import ChatRoom from '../../../../chat/chatroom';
-
-
+import {NavLink} from 'react-router-dom';
 
 class ChannelIndex extends React.Component {
     componentDidMount(){
@@ -19,18 +17,34 @@ class ChannelIndex extends React.Component {
 
 
     render(){
-
-        const channellist = this.props.channels.map( (channel) => (
-            <li key={channel.id}>
-                <p>{channel.name}</p>
-            </li>
-            )
-        )
+        const channelList = this.props.channels.map(channel =>
+            (<li draggable="true" key={channel.id}>
+                <NavLink to={`/@me/${this.props.uID}/${this.props.sID}/${channel.id}`}>
+                    #&nbsp;&nbsp;<p className="channel-name">{channel.name}</p>
+                </NavLink>
+            </li>) )
 
         return (
             <div className="channel-index-wrapper">
-                { Boolean(channellist) ? (<ul>{channellist}</ul>) : <h1>"xD"</h1> }
-                <ChatRoom />
+                <div className="channel-index-top">
+
+                    <header className="channel-index-header">
+                        {this.props.server ? this.props.server.name : ""}
+                    </header>
+                    <div className="server-invite-splash"> 
+
+                    </div>
+
+                    <div className="channel-list">
+                        <h2> Text Channels </h2>
+                        { Boolean(channelList) ? (<ul>{channelList}</ul>) : <h1>"xD"</h1> }
+                    </div>
+                </div>
+                <div className="channel-footer">
+                    <h1> FOOTER GOES HERE</h1>
+
+                </div>
+     
             </div>
         )
     }

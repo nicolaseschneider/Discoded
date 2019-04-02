@@ -1,0 +1,64 @@
+.channel-index-wrapper{
+  display:flex;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  font-size: 16px;
+  justify-content: space-between;
+  max-width: 232px;
+  width: 232px;
+  height: 100%;
+  outline: 0;
+  background-color: rgb(47,48,54);
+}
+.server-invite-code{
+  display:hidden;
+}
+.active{
+  color:white;
+}
+.channel-list{
+  padding-top: 22px;
+}
+
+.channel-index-header{
+  display:flex;
+  color: white;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 2px 0 rgba(0,0,0,.06);
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+ 
+  padding-left: 16px;
+  padding-right: 12px;
+  width: 212px;
+  height: 48px;
+  background-color: rgb(39,42,48);
+}
+.channel-list > h2{
+  font-size: 12px;
+  justify-self: center;
+  margin: 1px 0 1px 8px;
+  overflow: hidden;
+  padding: 0 8px;
+}
+.channel-list ul{
+  margin-top: 5px;
+}
+.channel-list li{
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  margin: 1px 0 1px 8px;
+  overflow: hidden;
+  padding: 0 8px;
+}
+.channel-list a{
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}

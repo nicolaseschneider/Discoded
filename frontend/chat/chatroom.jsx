@@ -12,59 +12,77 @@ class ChatRoom extends React.Component {
     this.bottom = React.createRef();
   }
 
-  componentDidMount() {
+  subscribe(){
     App.cable.subscriptions.create(
-      {channel: "ChatChannel"},
+      { channel: "ChatChannel", id: this.props.id },
       {
-        received: data =>{
-          switch(data.type){
+        received: data => {
+          switch (data.type) {
             case "message":
-            this.setState({
-              messages: this.state.messages.concat(data.message)
-            });
-            break
+              this.setState({
+                messages: this.state.messages.concat(data.message)
+              });
+              break
             case "messages":
-            this.setState({ messages: data.messages});
-            break;
+              this.setState({ messages: data.messages });
+              break;
           }
         },
-        speak: function(data) {return this.perform("speak", data);},
-        load: function() {return this.perform("load");}
+        speak: function (data) { return this.perform("speak", data); },
+        load: function (id) { return this.perform("load", id); },
+        unsub: function () { App.cable.subscriptions.remove(this); }
       }
-      );
+    );
+  }
+  componentDidMount() {
+    this.subscribe();
     this.loadMount();
   }
+
   loadMount(){
-    App.cable.subscriptions.subscriptions[0].load();
+    App.cable.subscriptions.subscriptions[0].load(this.props.id);
   }
+
+
   loadChat(e) {
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].load();
+    this.loadMount();
   }
 
 
-  componentDidUpdate(){
-    this.bottom.current.scrollIntoView();
+  componentDidUpdate(prevProps){
+    if (this.bottom.current) {
+      this.bottom.current.scrollIntoView();
+    }
+
+    if (prevProps.id !== this.props.id){
+      App.cable.subscriptions.subscriptions[0].unsub();
+      this.subscribe();
+    }
+  }
+
+  componentWillUnmount(){
+    App.cable.subscriptions.subscriptions.forEach((sub) => sub.unsub());
   }
   render(){
 
     const messageList = this.state.messages.map((message) => {
       return (
-        <li key={message.id}>
+        <li>
           {message}
           <div ref={this.bottom} />
         </li>
       );
     });
     return (
-      <div onLoad={this.loadChat} className="chatroom-container">
-        <div>
-          ChatRoom
+      <div onLoad={this.loadChat.bind(this)} className="chatroom-container">
+
+        <div className="channel-chat">
+          <div ref={this.bottom} />
+          <div className="message-list">{messageList}</div>
+          <MessageForm cID={this.props.id} user={this.props.user} />
         </div>
-        
-        <div className="message-list">{messageList}</div>
-        <div ref={this.bottom} />
-        <MessageForm />
+
       </div>
     );
   }
