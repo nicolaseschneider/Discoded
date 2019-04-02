@@ -28,8 +28,12 @@ class ChannelIndex extends React.Component {
             <div className="channel-index-wrapper">
                 <div className="channel-index-top">
 
-                    <header className="channel-index-header">
-                        {this.props.server ? this.props.server.name : ""}
+                    <header  className="channel-index-header">
+                        {this.props.server ? <h2>
+                            <p>{this.props.server.name }</p>
+                            <div onClick={this.props.openInviteModal}><i  class="fas fa-user-plus"></i></div>
+                        </h2>
+                            : ""}
                     </header>
                     <div className="server-invite-splash"> 
 

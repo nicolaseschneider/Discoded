@@ -15,6 +15,14 @@ class ServerIndex extends React.Component {
     this.modalON = this.modalON.bind(this);
     this.modalOFF = this.modalOFF.bind(this);
   }
+  copyInvite(code){
+    const el = document.createElement('textarea');
+    el.value = code;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
   componentDidMount(){
     this.props.getServers();
   }
@@ -57,6 +65,37 @@ class ServerIndex extends React.Component {
           <strong className="form-container">
             <JoinServer openDefModal={this.props.openDefModal} closeModal={this.props.closeModal}
             joinServer={this.props.joinServer} />
+          </strong>
+        </div>
+        break
+      case 'invite to server':
+
+        modal = <div onClick={this.modalOFF} className="modal-screen">
+          <strong className="form-container">
+            <div  onClick={(e)=> e.stopPropagation()} className="invite-container">
+              <header className="invite-header"> 
+                <h2>INVITE FRIENDS TO {this.props.selServer.name}<i onClick={this.modalOFF} class="fas fa-times"></i></h2>
+                
+              </header>
+              <div className="invite-content">
+                <p id="p1">Share this code with others to grant access to your server!</p>
+                <div className="invite">
+                  <div className="copy-invite">
+                    <input 
+                      type="text" 
+                      readOnly 
+                      value={this.props.selServer.invite_code}
+                    />
+                    <button onClick={this.copyInvite.bind(this,this.props.selServer.invite_code)}>Copy</button>
+                  </div>
+                </div>
+                <p id="p2">Your invite link expires in 1 day</p>
+              </div>
+              <div className="invite-footer">
+
+              </div>
+
+            </div>
           </strong>
         </div>
         break

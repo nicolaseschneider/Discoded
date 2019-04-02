@@ -28,14 +28,25 @@
   align-items: center;
   text-overflow: ellipsis;
   white-space: nowrap;
- 
   padding-left: 16px;
   padding-right: 12px;
-
   width: 204px;
   height: 48px;
-  background-color: rgb(39,42,48);
+  background-color: rgba(39,42,48,.6);
+  h2{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    div{
+      cursor:pointer;
+      height:100%;
+    }
+    div:hover{
+      color: rgba(255,255,255,.7);
+    }
+  }
 }
+
 .channel-list > h2{
   font-size: 12px;
   justify-self: center;

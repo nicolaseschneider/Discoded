@@ -1,4 +1,4 @@
-import {DEFAULT_SERVER_MODAL,CLOSE_MODAL, CREATE_SERVER_MODAL, JOIN_SERVER_MODAL} from '../../actions/ui_actions';
+import {DEFAULT_SERVER_MODAL, INVITE_MODAL ,CLOSE_MODAL, CREATE_SERVER_MODAL, JOIN_SERVER_MODAL} from '../../actions/ui_actions';
 import { RECEIVE_SERVER } from '../../actions/server_actions';
 
 export default (state = null, action) => {
@@ -10,7 +10,10 @@ export default (state = null, action) => {
       return action.modal;
     case JOIN_SERVER_MODAL:
       return action.modal;
+    case INVITE_MODAL:
+      return action.modal;
     case CLOSE_MODAL:
+
 
       return null;
     case RECEIVE_SERVER:
