@@ -9,14 +9,17 @@ class ServerIndexItem extends React.Component{
 
   render(){
     return (
-    <NavLink to={`/@me/${this.props.uId}/${this.props.server.id}`}>
-      <li className="server-icon">
-        <p>
-          {this.props.server.name.slice(0,2)}
-        </p>
-        <span className='server-name'>{this.props.server.name}</span>
-      </li>
-    </NavLink>
+      <div>
+        <NavLink to={`/@me/${this.props.uId}/${this.props.server.id}`}>
+          <li className="server-icon">
+            <p>
+              {this.props.server.name.slice(0,2)}
+            </p>
+            <span className='server-name'>{this.props.server.name}</span>
+          </li>
+        </NavLink>
+
+      </div>
     )
   }
 

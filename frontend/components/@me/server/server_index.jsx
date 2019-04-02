@@ -3,6 +3,7 @@ import React from 'react';
 import ServerIndexItem from './server_index_item';
 import DefaultModal from './default_modal';
 import CreateServer from './create_server';
+import {NavLink} from 'react-router-dom';
 import JoinServer from './join_modal';
 class ServerIndex extends React.Component {
 
@@ -75,17 +76,21 @@ class ServerIndex extends React.Component {
       <div>
         {modal}
       
-        <ul>
+        <ul className="server-list">
+          <NavLink to={`/@me/${this.props.user}`} >
+            <li>
+              <img className="server-bar-logo" src={window.logoURL}></img>
+            </li>
+          </NavLink>
 
-          <li>
-            <img className="server-bar-logo" src={window.logoURL}></img>
-          </li>
-          
           <div className="server-divide"></div>
+
           {indexList}
+
           <li onClick={this.modalON} className="add-server">
             +
           </li>
+
           <li onClick={this.props.logout} className="add-server">
             <i className="fas fa-sign-out-alt"></i>
           </li>

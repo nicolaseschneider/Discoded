@@ -6,10 +6,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 2;
+
 
 }
+
+.channel-detail{
+  position: relative;
+  z-index: 2;
+  width:100%;
+}
+
+.channel-name-container{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 100%;
+}
+
 .message-list {
   overflow-y: scroll;
   height: 300px;
@@ -17,7 +32,30 @@
   border: solid gray 1px;
 }
 
-.chatroom-container input{
+.channel-header{
+  position: relative;
+  z-index: 2;
+  width:100%;
+  background: rgb(47,48,54);
+  box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  height:48px;
+  padding: 0 12px 0 16px;
 
+}
+.hash{
+  color: rgb(136,145,157);
+}
+.channel-content{
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+}
+.channel-user-list{
+  width: 240px;
+  height: 100%;
+  background: #2f3136;
 }
 

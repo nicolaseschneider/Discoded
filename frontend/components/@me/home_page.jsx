@@ -27,9 +27,6 @@ class HomePage extends React.Component {
         <aside className="channel-detail">
           <Route path="/@me/:userId/:serverId/:channelId" component={ChannelDetailContainer} />
         </aside>
-        
-
-        <h1> WELCOME {this.props.user.username} </h1>
 
       </div>
     

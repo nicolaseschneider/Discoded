@@ -22,8 +22,19 @@ class ChannelDetail extends React.Component{
 
   render(){
     return (<div className="channel-detail">
-      
-        <ChatRoom id={this.props.cID} user={this.props.user} />
+        <header className="channel-header">
+          {this.props.channel ? 
+          (
+            <div className="channel-name-container">
+              <p className="hash">#&nbsp;</p>
+              <p>{this.props.channel.name}</p>
+            </div>
+          ) : ("")}
+        </header>
+        <div className="channel-content">
+          <ChatRoom id={this.props.cID} user={this.props.user} />
+          <aside className="channel-user-list"></aside>
+        </div>
       </div>
     )
   }
