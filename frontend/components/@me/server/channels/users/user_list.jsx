@@ -2,10 +2,11 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { getUsers } from '../../../../../actions/user_actions';
-
+import { createChannel } from '../../../../../actions/channel_actions';
 const msp = (state, ownProps) =>{
   let channel = state.entities.channels[ownProps.cID];
   let users = [];
+
   if (channel && channel.users) {
     users = channel.users.map((id) => state.entities.users[id])
   }
@@ -16,9 +17,12 @@ const msp = (state, ownProps) =>{
     users: users
   }
 }
+
 const mdp = dispatch => ({
-  fetchUsers: channelId => dispatch(getUsers(channelId))
-})
+  fetchUsers: channelId => dispatch(getUsers(channelId)),
+  createDM: channel => dispatch(createChannel(channel)),
+
+});
 
 class UserList extends React.Component{
 

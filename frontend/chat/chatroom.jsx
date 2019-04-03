@@ -113,7 +113,7 @@ class ChatRoom extends React.Component {
 
       } else {
         messageList.push(
-          <div className='append-div'>
+          <div key={Math.random() * 10000000} className='append-div'>
 
             <p className='message-body-append'>
               {this.state.messages[i]}

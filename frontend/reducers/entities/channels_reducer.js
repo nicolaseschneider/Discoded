@@ -11,11 +11,8 @@ export default (state = {}, action) => {
       newState[action.payload.channel_id].users = Object.keys(action.payload.users) 
       return newState
     case RECEIVE_ALL_CHANNELS:
-
       return action.channels;
-
     case RECEIVE_CHANNEL:
-
       const newChannel = { [action.channel.id]: action.channel };
       return merge({}, state, newChannel);
 

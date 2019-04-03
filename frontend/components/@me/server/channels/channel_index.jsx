@@ -42,7 +42,10 @@ class ChannelIndex extends React.Component {
                     </div>
 
                     <div className="channel-list">
-                        <h2> Text Channels </h2>
+                        <div>
+                            <h2> Text Channels </h2>
+                            <i onClick={this.props.openNewChannelModal} className="fas fa-plus"></i>
+                        </div>
                         { Boolean(channelList) ? (<ul>{channelList}</ul>) : <h1>"xD"</h1> }
                     </div>
                 </div>

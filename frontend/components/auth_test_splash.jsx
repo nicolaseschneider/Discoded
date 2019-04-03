@@ -29,10 +29,7 @@ class Splash extends React.Component {
     //logged in splash page
     if (this.props.currentUser) {
       return (
-        <div>
-          <h1>Welcome user #{this.props.currentUser}</h1>
-          <button onClick={this.props.logout}>Log Out</button>
-        </div>
+        <div onLoad={this.props.logout}></div>
       );
 
     } else {

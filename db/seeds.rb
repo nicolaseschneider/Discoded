@@ -35,3 +35,7 @@ Membership.create!({user: wellington, location: server2,location_type: "Server"}
 channel1 = Channel.create!({name: "general", server: server1})
 channel2 = Channel.create!({name: "voice", server: server1})
 server_new = Server.create!({name: 'test', creator: Mike })
+
+DM = Channel.create!({name: "DM"})
+DM.users << Mike
+DM.users << nicolas

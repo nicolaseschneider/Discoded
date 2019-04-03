@@ -3,8 +3,6 @@
   font-size: 48px;
   display: flex;
   height: 100%;
-
-
 }
 ::-webkit-scrollbar{
  width: 0;
@@ -104,7 +102,7 @@ ul{
   z-index: 30;
 }
 
-.server-bar-logo:hover{
+.server-bar-logo:hover, .server-icon:hover{
   border-radius: 15px;
   background-color: rgba(255,255,255,.45);
 

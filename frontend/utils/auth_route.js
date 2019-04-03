@@ -7,7 +7,7 @@ const isLoggedOut = ({component: Component, path, loggedIn, exact, userId}) => {
     !loggedIn ? (
       <Component {...props} />
     ) : (
-        <Redirect to={`/@me/${userId}`} />
+        <Redirect to={`/@me/${userId}/DMs`} />
     )
   )} />
 };

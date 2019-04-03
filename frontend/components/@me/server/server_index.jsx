@@ -5,6 +5,7 @@ import DefaultModal from './default_modal';
 import CreateServer from './create_server';
 import {NavLink} from 'react-router-dom';
 import JoinServer from './join_modal';
+import CreateChannel from './channels/new_channel_modal';
 class ServerIndex extends React.Component {
 
   constructor(props){
@@ -97,7 +98,14 @@ class ServerIndex extends React.Component {
           </strong>
         </div>
         break
-
+      case 'create channel':
+        modal = <div onClick={this.modalOFF} className="modal-screen">
+          <strong className="form-container">
+            <CreateChannel />
+          </strong>
+        </div>
+        break
+        
       default:
         modal = ""
         break
@@ -114,7 +122,7 @@ class ServerIndex extends React.Component {
         {modal}
       
         <ul className="server-list">
-          <NavLink to={`/@me/${this.props.user}`} >
+          <NavLink to={`/@me/${this.props.user}/DMs`} >
             <li>
               <img className="server-bar-logo" src={window.userIcon}></img>
             </li>

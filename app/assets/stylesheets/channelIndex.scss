@@ -20,6 +20,19 @@
 .channel-list{
   padding-top: 22px;
 }
+.DM-list img {
+  max-height: 30px;
+  max-width: 30px;
+  background-color: tomato;
+  border-radius: 50%;
+  margin-right: 5px;
+  box-sizing: border-box;
+  padding: 2px;
+
+}
+.DM-list a {
+  margin-top: 3px;
+}
 
 .channel-index-header{
   display:flex;
@@ -47,12 +60,26 @@
   }
 }
 
-.channel-list > h2{
+.channel-list > div >  h2 {
   font-size: 12px;
   justify-self: center;
   margin: 1px 0 1px 8px;
   overflow: hidden;
   padding: 0 8px;
+}
+.channel-list > div > .fas {
+  font-size: 12px;
+  align-self: center;
+  overflow: hidden;
+  padding: 0 8px;
+}
+.channel-list > div > .fas:hover{
+  color: rgba(255, 255, 255, 0.8)
+}
+.channel-list > div{
+ display: flex;
+ justify-content: space-between;
+ width: 90%;
 }
 .channel-list ul{
   margin-top: 5px;

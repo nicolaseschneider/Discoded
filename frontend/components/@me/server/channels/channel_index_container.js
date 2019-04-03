@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { selectServer, getServer } from '../../../../actions/server_actions';
 import ChannelIndex from './channel_index';
 import {getChannel, getChannels } from '../../../../actions/channel_actions'; 
-import {openInviteModal} from '../../../../actions/ui_actions';
+import {openInviteModal, openCreateChannelModal} from '../../../../actions/ui_actions';
 import {getUser} from '../../../../actions/user_actions'
 
 
@@ -24,8 +24,7 @@ const mdp = dispatch => ({
     getServer: (id) => dispatch(getServer(id)),
     openInviteModal: () => dispatch(openInviteModal),
     getUser: (id) => dispatch(getUser(id)),
-
-
+    openNewChannelModal: () => dispatch(openCreateChannelModal)
 });
 
 export default connect(msp,mdp)(ChannelIndex);
