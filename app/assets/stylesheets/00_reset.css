@@ -19,6 +19,7 @@ header, nav, section, ul, ol, li {
 
 html, body, #root {
   height: 100%;
+  width: 100vw;
   background: #26262b;
   box-sizing: border-box;
 }

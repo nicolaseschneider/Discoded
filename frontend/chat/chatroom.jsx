@@ -8,7 +8,7 @@ class ChatRoom extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {messages: []};
+    this.state = {messages: [], authors: []};
     this.bottom = React.createRef();
   }
 
@@ -20,11 +20,17 @@ class ChatRoom extends React.Component {
           switch (data.type) {
             case "message":
               this.setState({
-                messages: this.state.messages.concat(data.message)
+                messages: this.state.messages.concat(data.message),
+                authors: this.state.authors.concat(data.author),
+                dates: this.state.dates.concat(data.date)
               });
               break
             case "messages":
-              this.setState({ messages: data.messages });
+              this.setState({ 
+                messages: data.messages,
+                authors: data.authors,
+                dates: data.dates
+              });
               break;
           }
         },
@@ -48,7 +54,23 @@ class ChatRoom extends React.Component {
     e.preventDefault();
     this.loadMount();
   }
+  parseChat(){
+    for (let i = 0; i < this.state.messages.length; i++) {
+      if (i < this.state.messages.length - 1){
+        if (this.state.authors[i] === this.state.authors[i+1]){
 
+          this.setState({
+            messages: this.state.messages.slice(0,i).concat(
+              this.state.messages[i] + "\n" + this.state.messages[i+1]
+            ).concat(this.state.messages.slice(i+2)),
+            authors: this.state.authors.slice(0,i).concat(this.state.authors.slice(i+1)),
+            dates: this.state.dates.slice(0, i).concat(this.state.dates.slice(i + 1)),
+          })
+          i = 0
+        }
+      }
+    }
+  }
 
   componentDidUpdate(prevProps){
     if (this.bottom.current) {
@@ -65,15 +87,43 @@ class ChatRoom extends React.Component {
     App.cable.subscriptions.subscriptions.forEach((sub) => sub.unsub());
   }
   render(){
+    
+    let messageList = [];
+    for(let i = 0; i < this.state.messages.length; i++){
+      if (this.state.authors[i] !== this.state.authors[i - 1]){
 
-    const messageList = this.state.messages.map((message) => {
-      return (
-        <li>
-          {message}
-          <div ref={this.bottom} />
-        </li>
-      );
-    });
+        messageList.push(
+  
+          <li key={Math.random() * 10000000} className="message">
+            <img src={window.chatIcon} />
+            <div className='message-content'>
+  
+              <div className="message-content-header">
+                <h3>{this.state.authors[i]}</h3>
+                <h4>{this.state.dates[i]}</h4>
+              </div>
+              <p className='message-body'>
+                {this.state.messages[i]}
+              </p>
+            </div>
+            <div ref={this.bottom} />
+          </li>
+  
+        ) 
+
+      } else {
+        messageList.push(
+          <div className='append-div'>
+
+            <p className='message-body-append'>
+              {this.state.messages[i]}
+            </p>
+            <div ref={this.bottom} />
+          </div>
+        )
+      }
+
+    }
     return (
       <div onLoad={this.loadChat.bind(this)} className="chatroom-container">
 

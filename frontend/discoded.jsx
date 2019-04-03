@@ -3,7 +3,7 @@ import configStore from './store/store';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 //testing imports below this line
-
+import {getUsers} from './actions/user_actions'
 
 //testing imports above this line
 
@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // V testing methods V
   window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.getUsers = getUsers;
+
   // ^ testing methods ^
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

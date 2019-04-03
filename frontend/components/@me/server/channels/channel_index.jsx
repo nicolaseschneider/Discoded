@@ -1,11 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import { userInfo } from 'os';
 
 class ChannelIndex extends React.Component {
     componentDidMount(){
         
             this.props.selectServer(this.props.sID);
             this.props.receiveChannels(this.props.sID);
+            this.props.getUser(this.props.uID);
 
     }
     componentDidUpdate(prevProps){
@@ -31,7 +33,7 @@ class ChannelIndex extends React.Component {
                     <header  className="channel-index-header">
                         {this.props.server ? <h2>
                             <p>{this.props.server.name }</p>
-                            <div onClick={this.props.openInviteModal}><i  class="fas fa-user-plus"></i></div>
+                            <div onClick={this.props.openInviteModal}><i className="fas fa-user-plus"></i></div>
                         </h2>
                             : ""}
                     </header>
@@ -45,7 +47,8 @@ class ChannelIndex extends React.Component {
                     </div>
                 </div>
                 <div className="channel-footer">
-                    <h1> FOOTER GOES HERE</h1>
+                    <img src={window.chatIcon} />
+                    <h1>{this.props.user ? this.props.user.username : ""}</h1>
 
                 </div>
      

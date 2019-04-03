@@ -16,7 +16,7 @@ class ServerIndex extends React.Component {
     this.modalOFF = this.modalOFF.bind(this);
   }
   copyInvite(){
-    const el = document.getElementsByClassName('copyTarget');
+    const el = document.getElementById("copyTarget");
     el.select();
     document.execCommand('copy');
   }
@@ -79,7 +79,7 @@ class ServerIndex extends React.Component {
                 <div className="invite">
                   <div className="copy-invite">
                     <input 
-                      className="copyTarget"
+                      id="copyTarget"
                       type="text" 
                       readOnly 
                       value={this.props.selServer.invite_code}
@@ -116,7 +116,7 @@ class ServerIndex extends React.Component {
         <ul className="server-list">
           <NavLink to={`/@me/${this.props.user}`} >
             <li>
-              <img className="server-bar-logo" src={window.logoURL}></img>
+              <img className="server-bar-logo" src={window.userIcon}></img>
             </li>
           </NavLink>
 

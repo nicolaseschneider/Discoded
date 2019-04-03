@@ -74,3 +74,21 @@
   flex-direction: row;
 
 }
+.channel-footer{
+  height: 52px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 1px;
+  background-color: rgba(32, 34, 37, 0.3);
+  display: flex;
+  align-items: center;
+  img{
+    max-height: 30px;
+    max-width: 30px;
+    background-color: #7289da;
+    border-radius: 50%;
+    margin-right: 8px;
+    padding:3px;
+  }
+}

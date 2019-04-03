@@ -30,7 +30,6 @@ class MessageForm extends React.Component{
             value={this.state.body}
             placeholder = "Message the channel"
           />
-          <input type="submit" />
         </form>
       </div>
     )
