@@ -43,7 +43,7 @@ class Api::ChannelsController < ApplicationController
         render :show
       else
         user1 = User.find(params[:user_id])
-        user2 = User.find(params[:user_id])
+        user2 = User.find(params[:curruser_id])
         @channel = Channel.new(name: "@" + user1.username + " & " + "@" + user2.username)
         @channel.users << user1
         @channel.users << user2

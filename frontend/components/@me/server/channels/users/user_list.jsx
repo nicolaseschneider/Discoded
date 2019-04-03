@@ -14,7 +14,8 @@ const msp = (state, ownProps) =>{
   return{
     cID: ownProps.cID,
     channel: channel,
-    users: users
+    users: users,
+    cUser: state.session.currentUser
   }
 }
 
@@ -26,6 +27,14 @@ const mdp = dispatch => ({
 
 class UserList extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      curruser_id: this.props.cUser,
+      user_id: ""
+    }
+  }
+
 
   componentDidMount(){
     this.props.fetchUsers(this.props.cID)
@@ -34,6 +43,13 @@ class UserList extends React.Component{
     if (prevProps.cID !== this.props.cID){
       this.props.fetchUsers(this.props.cID)
     }
+  }
+  createDM(){
+    //add "message" to state"
+    // In channel controller, if the DM is made, create a new message on that Channel
+    //
+    e.preventDefault();
+    this.props.createDM(this.state)
   }
 
 
