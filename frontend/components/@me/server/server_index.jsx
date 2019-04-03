@@ -15,13 +15,10 @@ class ServerIndex extends React.Component {
     this.modalON = this.modalON.bind(this);
     this.modalOFF = this.modalOFF.bind(this);
   }
-  copyInvite(code){
-    const el = document.createElement('textarea');
-    el.value = code;
-    document.body.appendChild(el);
+  copyInvite(){
+    const el = document.getElementsByClassName('copyTarget');
     el.select();
     document.execCommand('copy');
-    document.body.removeChild(el);
   }
   componentDidMount(){
     this.props.getServers();
@@ -82,11 +79,12 @@ class ServerIndex extends React.Component {
                 <div className="invite">
                   <div className="copy-invite">
                     <input 
+                      className="copyTarget"
                       type="text" 
                       readOnly 
                       value={this.props.selServer.invite_code}
                     />
-                    <button onClick={this.copyInvite.bind(this,this.props.selServer.invite_code)}>Copy</button>
+                    <button onClick={this.copyInvite}>Copy</button>
                   </div>
                 </div>
                 <p id="p2">Your invite link expires in 1 day</p>
