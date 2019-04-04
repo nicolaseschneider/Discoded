@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getUsers } from '../../../../../actions/user_actions';
 import { createChannel } from '../../../../../actions/channel_actions';
+import { createDMForm } from '../../../../../actions/ui_actions';
+import UserListItem from './user_list_item';
 const msp = (state, ownProps) =>{
   let channel = state.entities.channels[ownProps.cID];
   let users = [];
@@ -22,18 +24,11 @@ const msp = (state, ownProps) =>{
 const mdp = dispatch => ({
   fetchUsers: channelId => dispatch(getUsers(channelId)),
   createDM: channel => dispatch(createChannel(channel)),
-
+  openDMform: () => dispatch(createDMForm)
 });
 
 class UserList extends React.Component{
 
-  constructor(props){
-    super(props);
-    this.state = {
-      curruser_id: this.props.cUser,
-      user_id: ""
-    }
-  }
 
 
   componentDidMount(){
@@ -44,13 +39,6 @@ class UserList extends React.Component{
       this.props.fetchUsers(this.props.cID)
     }
   }
-  createDM(){
-    //add "message" to state"
-    // In channel controller, if the DM is made, create a new message on that Channel
-    //
-    e.preventDefault();
-    this.props.createDM(this.state)
-  }
 
 
 
@@ -59,14 +47,11 @@ class UserList extends React.Component{
     if (this.props.users.length > 0) {
       users = this.props.users.map((user) => {
         return (
-          <li key={user.id} className="user-list-item">
-            <img src={window.userIcon} />
-            <h1>{user.username}</h1>
-          </li>
+          <UserListItem user={user} />
         )
       })
     }
-    return (<ul>
+    return (<ul className="user-list">
       {users}
     </ul>)
 

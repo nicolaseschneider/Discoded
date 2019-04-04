@@ -35,7 +35,6 @@ class ServerIndex extends React.Component {
 
   render() {
     let modal;
-    console.log(this.props.modal);
     switch(this.props.modal){
       case 'default server':
 

@@ -24,7 +24,21 @@
   box-sizing: border-box; 
 
 }
+.log-splash{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
+}
+.log-splash img{
+  min-height: 50%;
+}
+.log-splash > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 ul{
   list-style: none;
 }

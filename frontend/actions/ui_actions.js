@@ -4,8 +4,13 @@ export const JOIN_SERVER_MODAL = 'JOIN_SERVER_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const INVITE_MODAL = 'INVITE_MODAL'
 export const CREATE_CHANNEL_MODAL = 'CREATE_CHANNEL_MODAL'
+export const CREATE_DM_FORM = 'CREATE_DM_FORM'
 
 
+export const createDMForm = {
+  type: CREATE_DM_FORM,
+  modal: 'create DM form'
+}
 export const openDefServerModal = {
   type: DEFAULT_SERVER_MODAL,
   modal: 'default server'

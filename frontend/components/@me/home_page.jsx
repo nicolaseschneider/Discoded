@@ -6,6 +6,7 @@ import ChannelDetailContainer from './server/channels/channel_detail_container';
 import test from '../test';
 import DMIndexContainer from './DM_index_container';
 import DMDetailContainer from './DM_detail_container';
+import LoggedInSplash from './loggedin_splash';
 class HomePage extends React.Component {
   constructor(props){
     super(props);
@@ -32,6 +33,7 @@ class HomePage extends React.Component {
 
         <aside className="channel-detail">
           <Switch>
+            <Route exact path="/@me/:userId/DMs" component={LoggedInSplash} />
             <Route path="/@me/:userId/DMs/:channelId" component={DMDetailContainer} />
             <Route path="/@me/:userId/:serverId/:channelId" component={ChannelDetailContainer} />
           </Switch>

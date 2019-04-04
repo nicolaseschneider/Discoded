@@ -1,0 +1,99 @@
+.DM-form{
+    position: absolute;
+    top:calc(50% - 20px);
+    left: -250px;
+    background-color: #202225;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+    border: 1px solid #222427;
+    overflow: hidden;
+    cursor: default;
+    header{
+        padding: 20px 10px;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        font-size: 18px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        .dm-icon{
+            min-height: 75px;
+            min-width: 75px;
+            background-color: green;
+
+        }
+    }
+    
+    form{
+        input{
+            color: hsla(0, 0%, 100%, .7);
+            border-color: #23262a;
+            background-color: #36393f;
+            position: relative;
+            font-size: 12px;
+        }
+    }
+
+}
+.dm-list{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+
+}
+.DM-index-content{
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.DM-index-content h2{
+  font-size: 12px;
+  justify-self: center;
+  margin: 1px 0 1px 8px;
+  padding: 0 8px;
+  width: 150    px;
+}
+.DM-index-content ul{
+    width: 100%
+}
+
+.DM-list{
+    font-size: 12px;
+    a{
+        margin-top: 10px;
+    }
+    li{
+        margin-top: 10px;
+    }
+
+}
+.dm-list a{
+    margin-top: 100px;
+}
+.user-list{
+    position: relative;
+}
+.DM-index-header{
+  position: absolute;
+  top: 0px;
+  display:flex;
+  color: white;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 2px 0 rgba(0,0,0,.06);
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 16px;
+  padding-right: 12px;
+  width: 204px;
+  height: 48px;
+  background-color: rgba(39,42,48,.6);
+  h2{
+    width:100%;
+  }
+}

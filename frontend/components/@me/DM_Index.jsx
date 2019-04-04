@@ -20,11 +20,16 @@ class DMIndex extends React.Component{
       <div className="channel-index-wrapper">
         <div className="channel-index-top">
 
-          <div className="channel-list">
-            <div>
-              <h2> Direct Messages </h2>
+          <div className="channel-list dm-list">
+            <header className="DM-index-header">
+              <h2> Your DMs</h2>
+            </header>
+            <div className='DM-index-content'>
+              <div>
+                <h2> Direct Messages </h2>
+              </div>
+                {Boolean(channelList) ? (<ul className="DM-list">{channelList}</ul>) : <h1>"xD"</h1>}
             </div>
-            {Boolean(channelList) ? (<ul className="DM-list">{channelList}</ul>) : <h1>"xD"</h1>}
           </div>
         </div>
         <div className="channel-footer">
