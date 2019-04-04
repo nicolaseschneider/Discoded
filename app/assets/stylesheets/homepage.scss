@@ -27,17 +27,27 @@
 .log-splash{
   height: 100%;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
-
+  text-align: center;
+  font-size: 18px; 
+  font-weight: 400;
 }
 .log-splash img{
   min-height: 50%;
 }
+.log-splash header{
+  height: 56px;
+}
+
 .log-splash > div{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+.log-splash h1{
+  margin-bottom: 28px;
 }
 ul{
   list-style: none;

@@ -8,6 +8,6 @@ export default (props) =>(
             <img src={window.wumpus1} />
 
         </div>
-
+        <h1> Questions? Interested? Just want to chat? Email me at nicoefschneider@gmail.com </h1>
     </div>
 )

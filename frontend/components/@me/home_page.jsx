@@ -34,6 +34,7 @@ class HomePage extends React.Component {
         <aside className="channel-detail">
           <Switch>
             <Route exact path="/@me/:userId/DMs" component={LoggedInSplash} />
+            <Route exact path="/@me/:userId/:serverId" component={LoggedInSplash} />
             <Route path="/@me/:userId/DMs/:channelId" component={DMDetailContainer} />
             <Route path="/@me/:userId/:serverId/:channelId" component={ChannelDetailContainer} />
           </Switch>
