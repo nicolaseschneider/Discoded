@@ -14,28 +14,28 @@ Message.destroy_all
 
 nicolas = User.create!({username: 'Karateman', password: 'Glubgluby', email: 'nicolas.e.schneider@vanderbilt.edu'})
 marcus = User.create!({username: 'ILoveSmashUltimate', password: 'YoshiMain', email: 'mark@markymark.mark'})
-wellington = User.create!({username: 'MyNetflixSux', password: 'TekashiIsMyIdol', email: 'ImABigDeal@baller.bank'})
-Mike = User.create!({username: 'Mike', password: 'yeahboi', email: 'ImABigDeallll@baller.bank'})
+wellington = User.create!({username: ';Drop Table Users', password: 'TekashiIsMyIdol', email: 'ImABigDeal@baller.bank'})
+mike = User.create!({username: 'Mike', password: 'yeahboi', email: 'ImABigDeallll@baller.bank'})
 
-server1 = Server.create!({ name: 'general Chat', creator: nicolas})
+server1 = Server.create!({ name: 'Welcome to Discoded!', creator: nicolas})
 
-server2 = Server.create!({ name: 'lets bad talk nick', creator: wellington})
-server3 = Server.create!({ name: 'mikes-place', creator: Mike})
+server2 = Server.create!({ name: ';Drop Table Users', creator: wellington})
+server3 = Server.create!({ name: 'mikes-place', creator: mike})
      
 
 Membership.create!({user: nicolas, location: server1, location_type: "Server"})
 Membership.create!({user: wellington, location: server1,location_type: "Server"})
 Membership.create!({user: marcus, location: server1,location_type: "Server"})
-Membership.create!({user: Mike, location: server3, location_type: "Server"})
+Membership.create!({user: mike, location: server1, location_type: "Server"})
 
-
+Membership.create!({user: mike, location: server2, location_type: "Server"})
 Membership.create!({user: marcus, location: server2,location_type: "Server"})
 Membership.create!({user: wellington, location: server2,location_type: "Server"})
 
-channel1 = Channel.create!({name: "general", server: server1})
-channel2 = Channel.create!({name: "voice", server: server1})
-server_new = Server.create!({name: 'test', creator: Mike })
+channel1 = Channel.create!({name: "Just Chillin,", server: server1})
+channel2 = Channel.create!({name: "Release party!", server: server1})
+server_new = Server.create!({name: 'test', creator: mike })
 
 DM = Channel.create!({name: "DM"})
-DM.users << Mike
+DM.users << mike
 DM.users << nicolas

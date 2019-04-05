@@ -43,9 +43,11 @@ class NewDMForm extends React.Component{
     handleSubmit(e){
 
         e.preventDefault();
-
+        const cUser = this.props.cUser
+        const that = this
         this.props.createDM(this.state).then(channel => {
-            this.props.history.push(`/@me/${this.props.cUser}/DMs/${channel.id}`)
+            console.log(channel.channel.id)
+            that.props.history.push(`/@me/${cUser}/DMs/${channel.channel.id}`)
         })
     }
 

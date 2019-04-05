@@ -27,6 +27,6 @@ export const getChannels = (serverId) => dispatch => APIChannelUtil.fetchChannel
     errors => dispatch(receiveErrors(errors)));
 
 export const createChannel = formchannel => dispatch => APIChannelUtil.createChannel(formchannel)
-  .then(channel => { debugger
+  .then(channel => {
     return dispatch(receiveChannel(channel))},
     errors => dispatch(receiveErrors(errors)));
