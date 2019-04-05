@@ -20,9 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configStore();
   }
   // V testing methods V
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.getUsers = getUsers;
 
   // ^ testing methods ^
   const root = document.getElementById('root');
