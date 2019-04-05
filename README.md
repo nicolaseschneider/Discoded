@@ -23,8 +23,11 @@ CSS for styling
 
 # Planned Future Implementations:
 Voice chat
+
 Notifications and Online/offline users using websockets
+
 Uploading images for Profile Pictures/Server Icons
+
 Friends
 
 
