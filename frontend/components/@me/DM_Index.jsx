@@ -9,13 +9,13 @@ class DMIndex extends React.Component{
 
   render(){
     const channelList = this.props.channels.map(channel =>
-      (<li key={channel.id}>
         <NavLink to={`/@me/${this.props.uID}/DMs/${channel.id}`}>
-          <img src={window.chatIcon} />
-          <p className="channel-name">{channel.name}</p>
+          <li key={channel.id}>
+              <img src={window.chatIcon} />
+              <p className="channel-name">{channel.name}</p>
+          </li>
         </NavLink>
-      </li>))
-
+    )
     return (
       <div className="channel-index-wrapper">
         <div className="channel-index-top">

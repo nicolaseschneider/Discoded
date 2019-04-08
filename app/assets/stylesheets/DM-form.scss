@@ -19,8 +19,8 @@
         flex-direction: column;
         align-items: center;
         .dm-icon{
-            min-height: 75px;
-            min-width: 75px;
+            min-height: 65px;
+            min-width: 65px;
             background-color: green;
 
         }
@@ -42,6 +42,7 @@
     flex-direction: column;
     justify-content: flex-start;
     position: absolute;
+    width: 100%;
 
 }
 .DM-index-content{
@@ -57,24 +58,47 @@
   justify-self: center;
   margin: 1px 0 1px 8px;
   padding: 0 8px;
-  width: 150    px;
+  width:100%;
 }
+
 .DM-index-content ul{
     width: 100%
 }
 
 .DM-list{
+    width: 100%;
+      display: flex;
+  flex-direction: column;
+  align-items: center;
     font-size: 12px;
-    a{
-        margin-top: 10px;
-    }
     li{
         margin-top: 10px;
     }
 
 }
 .dm-list a{
-    margin-top: 100px;
+  display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border-radius: 3px;
+    margin: 1px 0 2px 8px;
+    padding: 0 8px;
+    color: #72767d;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 32px;
+    cursor: pointer;
+    position: relative;
+
+}
+.dm-list .active{
+    background-color: rgba(255,255,255,.4);
+    color: white;
+}
+.dm-list .active:hover{
+    background-color: rgba(255,255,255,.4);
+    color: white;
 }
 .user-list{
     position: relative;
@@ -96,4 +120,16 @@
   h2{
     width:100%;
   }
+}
+.dm-list a{
+  width: 90%;
+  border-radius: 3px;
+  box-sizing: border-box;
+      padding: 0 8px;
+      margin-bottom: 4px;
+}
+.dm-list a:hover{
+  border-radius: 3px;
+  background-color: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7);
 }

@@ -21,17 +21,21 @@
   padding-top: 22px;
 }
 .DM-list img {
-  max-height: 30px;
-  max-width: 30px;
+  max-height: 20px;
+  max-width: 20px;
   background-color: tomato;
   border-radius: 50%;
   margin-right: 5px;
   box-sizing: border-box;
   padding: 2px;
+  margin-top: 6px;
 
 }
-.DM-list a {
-  margin-top: 3px;
+.DM-list{
+  width: 100%;
+}
+.DM-list{
+  width: 100%;
 }
 
 .channel-index-header{
@@ -74,12 +78,13 @@
   padding: 0 8px;
 }
 .channel-list > div > .fas:hover{
-  color: rgba(255, 255, 255, 0.8)
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 .channel-list > div{
  display: flex;
  justify-content: space-between;
- width: 90%;
+ width: 100%;
 }
 .channel-list ul{
   margin-top: 5px;
@@ -91,11 +96,9 @@
   flex-direction: row;
   height: 32px;
   margin: 1px 0 1px 8px;
-  padding: 0 8px;
 }
 .channel-list a{
   align-items: center;
-  width: 100%;
   display: flex;
   flex-direction: row;
 
@@ -117,4 +120,34 @@
     margin-right: 8px;
     padding:3px;
   }
+}
+.channel-index-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.channel-index-ul a{
+  width: 90%;
+  border-radius: 3px;
+  box-sizing: border-box;
+      padding: 0 8px;
+      margin-bottom: 4px;
+}
+.channel-index-ul a:hover{
+  border-radius: 3px;
+  background-color: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7);
+}
+
+.channel-index-ul li{
+    display:flex;
+      align-items: center;
+    justify-content: flex-start;
+}
+.channel-index-ul .active{
+  background-color: rgba(255,255,255,.4);
+}
+.channel-index-ul .active:hover{
+  background-color: rgba(255,255,255,.4);
+  color: white;
 }

@@ -15,7 +15,7 @@
 }
 .server-bar{
   height: 100%;
-  width: 70px;
+  width: 85px;
   position: relative;
   display:flex;
   flex-direction: column;
@@ -112,18 +112,17 @@ ul{
 .server-name{
   color: rgba(255,255,255,.9);
   background-color: rgba(0,0,0,1);
-  position: absolute;
-  top: 8px;
+  position: relative;
+  top: -50px;
   left: 55px;
   display:none;
-  max-width: 300px;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
   line-height: 14px;
   padding: 8px 11px;
   white-space: nowrap;
-  z-index: 30;
+  z-index: 300000000;
 }
 
 .server-bar-logo:hover, .server-icon:hover{
@@ -131,7 +130,7 @@ ul{
   background-color: rgba(255,255,255,.45);
 
   .server-name {
-    display:block
+    display: inline;
   }
 }
 
@@ -141,16 +140,17 @@ div > .active > li{
 }
 .server-bar ul{
   position: relative;
-  width: 80vw;
+
+  width: 400px;
   height: 100%;
   overflow-y: scroll;
-  z-index: 0;
+
   overflow-x: hidden;
 }
 .server-bar > div{
-  height:100%;
+  position: absolute;
 }
-.server-bar > div > ul > a{
+.server-bar > div > ul > div >  a{
   z-index: 1;
   max-width: 50px;
 }
@@ -163,4 +163,7 @@ div > .active > li{
 .channel-header{
   width:100%;
   box-sizing: border-box;
+}
+.server-list a{
+  max-width: 50px;
 }

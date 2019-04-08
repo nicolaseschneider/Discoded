@@ -27,12 +27,6 @@ class Splash extends React.Component {
   
   render() {
     //logged in splash page
-    if (this.props.currentUser) {
-      return (
-        <div onLoad={this.props.logout}></div>
-      );
-
-    } else {
       //splash page! stylish!
       return (
         <div className="splash-page-wrapper">
@@ -133,6 +127,6 @@ class Splash extends React.Component {
     }
 
   };
-}
+
 
 export default Splash;

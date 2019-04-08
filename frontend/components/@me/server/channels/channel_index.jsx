@@ -20,11 +20,12 @@ class ChannelIndex extends React.Component {
 
     render(){
         const channelList = this.props.channels.map(channel =>
-            (<li draggable="true" key={channel.id}>
                 <NavLink to={`/@me/${this.props.uID}/${this.props.sID}/${channel.id}`}>
+            <li draggable="true" key={channel.id}>
                     #&nbsp;&nbsp;<p className="channel-name">{channel.name}</p>
+            </li> 
                 </NavLink>
-            </li>) )
+            )
 
         return (
             <div className="channel-index-wrapper">
@@ -46,7 +47,7 @@ class ChannelIndex extends React.Component {
                             <h2> Text Channels </h2>
                             <i onClick={this.props.openNewChannelModal} className="fas fa-plus"></i>
                         </div>
-                        { Boolean(channelList) ? (<ul>{channelList}</ul>) : <h1>"xD"</h1> }
+                        { Boolean(channelList) ? (<ul className="channel-index-ul">{channelList}</ul>) : <h1>"xD"</h1> }
                     </div>
                 </div>
                 <div className="channel-footer">
