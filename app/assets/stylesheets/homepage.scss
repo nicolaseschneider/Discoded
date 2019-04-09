@@ -115,7 +115,8 @@ ul{
   padding: 8px 11px;
   white-space: nowrap;
   z-index: 300000000;
-  text-overflow: a;
+  text-overflow: ellipsis;
+  overflow: hidden;
   max-width: 400px;
 
 }
