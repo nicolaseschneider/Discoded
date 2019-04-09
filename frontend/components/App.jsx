@@ -5,6 +5,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import Splash from './Auth_test_container';
 import { Route, Switch } from 'react-router-dom';
 import HomePageContainer from './@me/home_page_container';
+import VideoCall from '../chat/WebRTC/videocall';
 
 
 const App = () => (
@@ -14,7 +15,7 @@ const App = () => (
       <AuthRouteLoggedOut path="/signup" component={SignUpFormContainer} />
       <Route exact path="/" component={Splash} />
       <AuthRouteLoggedIn path="/@me/:userId" component={HomePageContainer} />
-
+      <Route exact path="/testingvideo" component={VideoCall}  />
   </div>
 );
 

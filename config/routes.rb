@@ -7,9 +7,14 @@ Rails.application.routes.draw do
     resources :channels, only: [:create, :destroy, :update, :show, :index]
     resources :servers, only: [:create, :destroy, :update, :show, :index]
   end
-
+  resources :calls, only: :create
   resources :servers, default: :json, only: :show
   get 'gg/:id', to: 'servers#join'
+
+
+ 
+
+
   root to: 'static_pages#root'
   mount ActionCable.server, at: '/channel'
   
