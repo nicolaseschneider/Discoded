@@ -15,7 +15,7 @@ class JoinServerModal extends React.Component {
 
   parseInvite(code) {
     if(code.length>10){
-      return code.slice(39)
+      return code.slice(35)
     } else {
       return code
     }
