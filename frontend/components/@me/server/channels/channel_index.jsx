@@ -25,10 +25,10 @@ class ChannelIndex extends React.Component {
 
     render(){
         const channelList = this.props.channels.map(channel =>
-                <NavLink to={`/@me/${this.props.uID}/${this.props.sID}/${channel.id}`}>
-            <li draggable="true" key={channel.id}>
-                    #&nbsp;&nbsp;<p className="channel-name">{channel.name}</p>
-            </li> 
+                <NavLink key={channel.id} to={`/@me/${this.props.uID}/${this.props.sID}/${channel.id}`}>
+                    <li>
+                        #&nbsp;&nbsp;<p className="channel-name">{channel.name}</p>
+                    </li> 
                 </NavLink>
             )
 

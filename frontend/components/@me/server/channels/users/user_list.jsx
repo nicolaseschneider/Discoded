@@ -47,7 +47,7 @@ class UserList extends React.Component{
     if (this.props.users.length > 0) {
       users = this.props.users.map((user) => {
         return (
-          <UserListItem user={user} />
+          <UserListItem key ={user.id} user={user} />
         )
       })
     }

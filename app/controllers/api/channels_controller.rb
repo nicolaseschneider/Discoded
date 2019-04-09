@@ -3,11 +3,11 @@ class Api::ChannelsController < ApplicationController
     def index
         unless params[:id] == "DM"
             server = Server.includes(:channels).find(params[:id])
-            @channels = server.channels
+            @channels = server.channels.includes(:users)
             render :index
         else
             @channels = []
-            Channel.where(server_id: nil).find_each do |dm|
+            Channel.includes(:users).where(server_id: nil).find_each do |dm|
               @channels << dm if dm.users.include?(current_user)
             end 
             @channels
@@ -18,9 +18,8 @@ class Api::ChannelsController < ApplicationController
 
 
     def show
-        @channel = Channel.find(params[:id])
-
-        render :show
+      @channel = Channel.includes(:users).find(params[:id])
+      render :show
     end
 
     
@@ -29,7 +28,7 @@ class Api::ChannelsController < ApplicationController
     if params[:channel][:server_id]
 
       @channel = Channel.new(channel_params)
-      server = Server.find(params[:channel][:server_id])
+      server = Server.includes(:channels).find(params[:channel][:server_id])
       @channel.server = server
 
     elsif params[:channel][:user_id]

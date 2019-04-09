@@ -24,9 +24,9 @@ class UserListItem extends React.Component{
         const { user } = this.props;
         if (this.props.user){
             return (
-                <div>
+                <div >
     
-                    <li key={user.id} onClick={this.openDM.bind(this)} className="user-list-item">
+                    <li  onClick={this.openDM.bind(this)} className="user-list-item">
                         <img src={window.userIcon} />
                         <h1>{user.username}</h1>
                     </li>

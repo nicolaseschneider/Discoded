@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configStore();
   }
   // V testing methods V
-
+  window.getState = store.getState;
   // ^ testing methods ^
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
