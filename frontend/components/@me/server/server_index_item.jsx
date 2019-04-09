@@ -16,8 +16,8 @@ class ServerIndexItem extends React.Component{
               {this.props.server.name.slice(0,2)}
             </p>
             <span className='server-name'>{this.props.server.name}</span>
-            <aside className='server-selected?'></aside>
           </li>
+            <aside className='server-selected'></aside>
         </NavLink>
 
       </div>

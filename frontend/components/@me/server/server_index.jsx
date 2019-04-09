@@ -82,7 +82,7 @@ class ServerIndex extends React.Component {
                       id="copyTarget"
                       type="text" 
                       readOnly 
-                      value={this.props.selServer.invite_code}
+                      value={'https://discoded.herokuapp.com/servers/' + this.props.selServer.invite_code}
                     />
                     <button onClick={this.copyInvite}>Copy</button>
                   </div>

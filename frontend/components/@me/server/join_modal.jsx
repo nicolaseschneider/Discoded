@@ -13,9 +13,17 @@ class JoinServerModal extends React.Component {
     this.updateCode = this.updateCode.bind(this);
   }
 
+  parseInvite(code) {
+    if(code.length>10){
+      return code.slice(39)
+    } else {
+      return code
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.joinServer(this.state.code);
+    this.props.joinServer(this.parseInvite(this.state.code));
   }
 
   updateCode(e) {

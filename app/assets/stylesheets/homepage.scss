@@ -16,7 +16,6 @@
   position: relative;
   display:flex;
   flex-direction: column;
-  padding: 10px 0 0 10px;
   background-color: #202225;
   box-sizing: border-box; 
 
@@ -51,8 +50,8 @@ ul{
 }
 
 .server-divide{
-  height: 3px;
-  width: 33px;
+  height: 2px;
+  width: 51px;
   background: #2f3136;
   margin: 0 auto;
   margin-top: 10px;
@@ -68,7 +67,6 @@ ul{
   z-index:1;
   height: 50px;
   width: 50px;
-  margin-top: 8px;
   font-size: 18px;
   line-height: 50px;
   text-align: center;
@@ -83,8 +81,6 @@ ul{
   width: 50px;
   border-radius: 50%;
   background: rgb(206,234,235);
-  margin: 0;
-
 }
 .add-server, .log-out{
   display:flex;
@@ -98,7 +94,6 @@ ul{
   font-weight: 400;
   height: 50px;
   width: 50px;
-  margin-top: 8px;
   position: relative;
   text-align: center;
 }
@@ -135,6 +130,19 @@ div > .active > li{
   border-radius: 15px;
   background-color: rgba(255,255,255,.45);
 }
+div > .active .server-selected{
+  position: absolute;
+  background: white;
+  height: 53px;
+  width: 100px;
+  border-radius: 15px;
+  left: -95px;
+  z-index: 20;
+  transform: translateY(-51px);
+
+
+
+}
 .server-bar ul{
   position: relative;
 
@@ -163,4 +171,7 @@ div > .active > li{
 }
 .server-list a{
   max-width: 50px;
+}
+.server-list li{
+  margin:10px 0 0 10px;
 }
