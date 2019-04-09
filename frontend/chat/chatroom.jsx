@@ -95,18 +95,21 @@ class ChatRoom extends React.Component {
         messageList.push(
   
           <li key={Math.random() * 10000000} className="message">
-            <img src={window.chatIcon} />
-            <div className='message-content'>
-  
-              <div className="message-content-header">
-                <h3>{this.state.authors[i]}</h3>
-                <h4>{this.state.dates[i]}</h4>
+            <div className='messageLineHeader'></div>
+            <div>
+              <img src={window.chatIcon} />
+              <div className='message-content'>
+    
+                <div className="message-content-header">
+                  <h3>{this.state.authors[i]}</h3>
+                  <h4>{this.state.dates[i]}</h4>
+                </div>
+                <p className='message-body'>
+                  {this.state.messages[i]}
+                </p>
               </div>
-              <p className='message-body'>
-                {this.state.messages[i]}
-              </p>
+              <div ref={this.bottom} />
             </div>
-            <div ref={this.bottom} />
           </li>
   
         ) 

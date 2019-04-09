@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import { userInfo } from 'os';
 
 class ChannelIndex extends React.Component {
+
     componentDidMount(){
         
             this.props.selectServer(this.props.sID);
@@ -10,11 +10,16 @@ class ChannelIndex extends React.Component {
             this.props.getUser(this.props.uID);
 
     }
+
     componentDidUpdate(prevProps){
         if (this.props.match.params.serverId !== prevProps.sID){
             this.props.selectServer(this.props.sID);
             this.props.receiveChannels(this.props.sID);
         }
+    }
+
+    componentWillUnmount(){
+        this.props.clear();
     }
 
 

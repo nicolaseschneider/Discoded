@@ -6,14 +6,24 @@ class DMDetail extends React.Component {
 
   componentDidMount() {
     this.props.selectChannel(this.props.cID);
-    this.props.fetchChannel(this.props.cID);
+    this.props.fetchChannel(this.props.cID).then(this.props.fetchUsers(this.props.cID));
   }
   componentDidUpdate(prevProps) {
     if (this.props.match.params.channelId !== prevProps.cID) {
-      this.props.selectChannel(this.props.cID);
-      this.props.fetchChannel(this.props.cID);
-
+      this.props.fetchChannel(this.props.cID)
+      .then(() => this.props.selectChannel(this.props.cID))
+      .then( () => this.props.fetchUsers(this.props.cID));
     }
+  }
+  parseDM(name) {
+    let find = name.split(' ##$$#aS4#$$## ');
+    switch (find[0]) {
+      case this.props.user.username:
+        return find[1];
+      default:
+        return find[0];
+    }
+
   }
 
 
@@ -27,7 +37,7 @@ class DMDetail extends React.Component {
           (
             <div className="channel-name-container">
               <p className="hash">#&nbsp;</p>
-              <p>{this.props.channel.name}</p>
+              <p>{this.parseDM(this.props.channel.name)}</p>
             </div>
           ) : ("")}
       </header>

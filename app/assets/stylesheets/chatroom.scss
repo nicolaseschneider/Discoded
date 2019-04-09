@@ -36,6 +36,20 @@
   overflow-y: scroll;
   margin-bottom: -1px;
 }
+.message-list::-webkit-scrollbar {
+  width: 14px;
+  margin-right: 2px;
+  background-color: #36393f;
+  border-radius: 7px;
+  border: 3px solid #36393f;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 3px solid #36393f;
+  border-radius: 7px;
+  background-color: #2f3036;
+}
 
 .channel-header{
   position: relative;

@@ -50,10 +50,13 @@
   width: 204px;
   height: 48px;
   background-color: rgba(39,42,48,.6);
+  overflow-x: hidden;
   h2{
-    width:100%;
+    width:204px;
     display:flex;
     justify-content: space-between;
+    overflow:hidden;
+    text-overflow: ellipsis;
     div{
       cursor:pointer;
       height:100%;
@@ -101,7 +104,24 @@
   align-items: center;
   display: flex;
   flex-direction: row;
+  text-overflow: ellipsis;
 
+}
+.channel-name-container > p{
+  text-overflow: ellipsis;
+  max-width: 60vw;
+  overflow: hidden;
+}
+.channel-header{
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+.channel-name{
+  text-overflow: ellipsis;
+  max-width: 167px;
+  max-height: 34px;
+  overflow: hidden;
 }
 .channel-footer{
   height: 52px;

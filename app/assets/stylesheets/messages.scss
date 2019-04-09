@@ -5,7 +5,11 @@
   padding-bottom: 20px;
   padding-top: 20px;
   display: flex;
+  flex-direction: column;
 
+}
+.message > div {
+  display: flex;
 }
 .message img{
   max-width: 40px;
@@ -44,7 +48,8 @@
   line-height: 1.3;
   user-select: text;
   white-space: pre-wrap;
-  word-wrap: break-word;
+  word-wrap: normal;
+  margin-right: 10px;
 }
 .message{
   padding-bottom: 10px;
@@ -59,9 +64,18 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   margin-left: 99px;
-  top: -1.59vh;
+  margin-right: 10px;
   position: relative;
 }
 .append-div{
   position: relative;
+
+  top: -0.8vh;
+}
+.messageLineHeader{
+  max-height: 0;
+  width: calc(100% -25px);
+  margin: 25px;
+  border: .4px solid hsla(0,0%,100%,.2);
+  box-sizing: border-box;
 }

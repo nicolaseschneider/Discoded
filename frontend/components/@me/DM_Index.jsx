@@ -3,19 +3,35 @@ import { NavLink } from 'react-router-dom';
 
 class DMIndex extends React.Component{
   componentDidMount(){
-    this.props.getDMs();
+    this.props.getUser(this.props.uID).then( () => this.props.getDMs() );
+  }
+  
+  componentWillUnmount(){
+    this.props.clear();
   }
 
+  parseDM(name){
+    let find = name.split(' ##$$#aS4#$$## ');
+    if (this.props.user){
+      switch(find[0]){
+        case this.props.user.username:
+          return find[1];
+        default:
+          return find[0];
+      }
+    }
+    return ""
+
+  }
 
   render(){
     const channelList = this.props.channels.map(channel =>
         <NavLink to={`/@me/${this.props.uID}/DMs/${channel.id}`}>
           <li key={channel.id}>
               <img src={window.chatIcon} />
-              <p className="channel-name">{channel.name}</p>
+              <p className="channel-name">{this.parseDM(channel.name)}</p>
           </li>
-        </NavLink>
-    )
+        </NavLink>)
     return (
       <div className="channel-index-wrapper">
         <div className="channel-index-top">
@@ -28,7 +44,7 @@ class DMIndex extends React.Component{
               <div>
                 <h2> Direct Messages </h2>
               </div>
-                {Boolean(channelList) ? (<ul className="DM-list">{channelList}</ul>) : <h1>"xD"</h1>}
+              <ul className="DM-list">{channelList}</ul>
             </div>
           </div>
         </div>

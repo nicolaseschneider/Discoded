@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import { selectChannel, getChannel } from '../../actions/channel_actions';
-import { getUsers } from '../../actions/user_actions';
+import { getUsers, getUser } from '../../actions/user_actions';
 import DMDetail from './DM_detail';
 
 const msp = (state, ownProps) => {
@@ -16,7 +16,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   selectChannel: id => dispatch(selectChannel(id)),
   fetchChannel: id => dispatch(getChannel(id)),
-  fetchUsers: channelId => dispatch(getUsers(channelId))
+  fetchUsers: channelId => dispatch(getUsers(channelId)),
+  fetchUser: id => dispatch(getUser(id))
 });
 
 

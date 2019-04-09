@@ -1,4 +1,4 @@
-import { RECEIVE_CHANNEL, RECEIVE_ALL_CHANNELS } from '../../actions/channel_actions';
+import { RECEIVE_CHANNEL, RECEIVE_ALL_CHANNELS, CLEAR_CHANNELS } from '../../actions/channel_actions';
 import { merge } from 'lodash';
 import {RECEIVE_USERS } from '../../actions/user_actions';
 
@@ -15,7 +15,8 @@ export default (state = {}, action) => {
     case RECEIVE_CHANNEL:
       const newChannel = { [action.channel.id]: action.channel };
       return merge({}, state, newChannel);
-
+    case CLEAR_CHANNELS:
+      return {};
     default:
       return state;
   }
