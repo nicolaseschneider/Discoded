@@ -115,6 +115,9 @@ ul{
   padding: 8px 11px;
   white-space: nowrap;
   z-index: 300000000;
+  text-overflow: a;
+  max-width: 400px;
+
 }
 
 .server-bar-logo:hover, .server-icon:hover{
@@ -137,7 +140,7 @@ div > .active .server-selected{
   width: 100px;
   border-radius: 15px;
   left: -95px;
-  z-index: 20;
+  z-index: 3;
   transform: translateY(-51px);
 
 
