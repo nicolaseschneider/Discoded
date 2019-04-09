@@ -55,8 +55,10 @@
     width:204px;
     display:flex;
     justify-content: space-between;
-    overflow:hidden;
+    p{
+    overflow: hidden;
     text-overflow: ellipsis;
+    }
     div{
       cursor:pointer;
       height:100%;
