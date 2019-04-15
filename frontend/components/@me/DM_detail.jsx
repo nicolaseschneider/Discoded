@@ -16,12 +16,15 @@ class DMDetail extends React.Component {
     }
   }
   parseDM(name) {
-    let find = name.split(' ##$$#aS4#$$## ');
-    switch (find[0]) {
-      case this.props.user.username:
-        return find[1];
-      default:
-        return find[0];
+    if (this.props.user){
+
+      let find = name.split(' ##$$#aS4#$$## ');
+      switch (find[0]) {
+        case this.props.user.username:
+          return find[1];
+        default:
+          return find[0];
+      }
     }
 
   }
