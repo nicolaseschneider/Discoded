@@ -56,8 +56,15 @@ class ChannelIndex extends React.Component {
                     </div>
                 </div>
                 <div className="channel-footer">
-                    <img src={window.chatIcon} />
-                    <h1>{this.props.user ? this.props.user.username : ""}</h1>
+                    <div>
+                        <img src={window.chatIcon} />
+                        <span>
+                            <h1>{this.props.user ? this.props.user.username : ""}</h1>
+                            <h2>{this.props.user ? "#" + this.props.user.id +"48": ""}</h2>
+                        </span>
+                    </div>
+
+                    <i className="fa fa-cog" aria-hidden="true"></i>
 
                 </div>
      

@@ -1,6 +1,5 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    puts params
     channel = Channel.find(params[:id])
     stream_for channel
     load(params[:id])

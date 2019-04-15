@@ -136,3 +136,67 @@
   line-height: 20px;
   box-sizing: border-box;
 }
+.welcomeMessage{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  
+}
+.hellothere{
+    color: #7289da;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 8px;
+    margin: 18px 28px 30px;
+    text-transform: uppercase;
+    text-align: center;
+
+    
+
+}
+.serverWelcomeContainer{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.inviteContainer{
+  display: flex;
+  color: #87909c;
+  font-size: 15px;
+  line-height: 150%;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  margin-top: 9px;
+  width: 100%;
+  font-weight: 400;
+  justify-content: flex-start;
+  img{
+    max-height: 50px;
+    max-width: 50px;
+    margin-right: 27px;
+  }
+  i{
+    font-size: 36px;
+    min-width: 50px;
+    color: #7289da;
+    margin-right: 22px;
+    padding-left: 6px;
+  }
+  h2{
+    font-weight: 700;
+  }
+  p{
+    font-weight: 400;
+  }
+}
+
+.transImageContainer{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  position: relative;
+  z-index: 3;
+}
