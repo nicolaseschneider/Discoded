@@ -134,6 +134,7 @@
   background-color: rgba(32, 34, 37, 0.3);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   img{
     max-height: 30px;
     max-width: 30px;
@@ -141,6 +142,15 @@
     border-radius: 50%;
     margin-right: 8px;
     padding:3px;
+  }
+  div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  h2{
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
   }
 }
 .channel-index-ul {
