@@ -158,11 +158,11 @@ class VideoCall extends React.Component{
     
         if (true){
             let candidate = JSON.parse(data.sdp)
-            debugger
+
             let iCEcandidate = new RTCIceCandidate(candidate)
             pc.addIceCandidate(iCEcandidate)
             .then(() => {
-                debugger
+     
                 console.log("Ice candidate added", candidate)}).catch( () => console.log("ERROR"))
             ;
         }
