@@ -1,6 +1,7 @@
 class CallsController < ApplicationController
     def create
         head :no_content
+
         ActionCable.server.broadcast("vid_channel_" + params[:id], v_call_params)
     end
 

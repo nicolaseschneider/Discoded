@@ -16,6 +16,7 @@ class Channel < ApplicationRecord
   after_initialize :ensure_members
 
   def ensure_members
+    Server.includes(:users);
     if self.server
       self.server.users.each do |user| 
 

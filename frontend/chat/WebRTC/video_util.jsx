@@ -15,15 +15,15 @@ export const lightsCamera = function(){
                 video: true
             }
         ).then(stream => {
-                that.setState({localStream: stream})
-                that.state.localVideo.srcObject = stream;
+                that.localStream = stream
+                that.localVideo.srcObject = stream;
             })
             .catch(logError);
     }
 
 }
 // Ice Credentials
-export const ice = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
+export const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
 
 const createPC = (userId, isOffer) => {
     let pc = new RTCPeerConnection(ice);

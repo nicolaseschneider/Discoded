@@ -8,12 +8,8 @@ const msp = state =>({
 class VideoCall extends React.Component{
     constructor(props){
         super(props)
-        this.state = 
-                    {
-                        pcPeers: {}, 
-                        localStream: null, 
-                        ice, 
-                    };
+        this.pcPeers = {};
+        this.state = {active: false};
         
     }
     //ice = ice credentials
@@ -22,12 +18,10 @@ class VideoCall extends React.Component{
     // localVideo + remoteVideoContainer are DOM elements
 
     componentDidMount(){
-        this.setState(
-                    {
-                        localVideo: document.getElementById("local-video"),
-                        remoteVideoContainer: document.getElementById("remote-video-container")
-                    }
-        );
+
+
+        this.localVideo = document.getElementById("local-video"),
+        this.remoteVideoContainer = document.getElementById("remote-video-container")
         lightsCamera.bind(this)();
     }
 
@@ -42,19 +36,23 @@ class VideoCall extends React.Component{
             {
                 connected: () => {
                     console.log("connected")
-                    broadcastData({type: JOIN_CALL, from: that.props.current_user, id: "76" });
+                    broadcastData({
+                        type: JOIN_CALL, 
+                        from: me, 
+                        id: "76" 
+                    });
                 },
                 received: data =>{
                     console.log("received:", data);
                     if (data.from === me) return;
                     switch(data.type) {
                         case JOIN_CALL:
-                            return that.join(data);
+                            return this.join(data);
                         case EXCHANGE:
                             if (data.to !== me) return;
-                            return that.exchange(data);
+                            return this.exchange(data);
                         case LEAVE_CALL:
-                            return that.removeUser(data);
+                            return this.removeUser(data);
                         default:
                             return;
                     }
@@ -67,14 +65,23 @@ class VideoCall extends React.Component{
     leaveCall(e){
         //disconnect from the action cable
         e.preventDefault();
-        const pcKeys = Object.keys(this.state.pcPeers);
+        const pcKeys = Object.keys(this.pcPeers);
         for(let i = 0; i < pcKeys.length; i++){
-            this.state.pcPeers[pcKeys[i]].close();
+            this.pcPeers[pcKeys[i]].close();
         }
-        this.setState({ pcPeers: {} });
+        this.pcPeers = {};
+        this.localVideo.srcObject.getTracks().forEach( function (track){
+            track.stop();
+        })
+        this.localVideo.srcObject = null;
         App.cable.subscriptions.subscriptions = [];
       
-        this.state.remoteVideoContainer.innerHTML = "";
+        this.remoteVideoContainer.innerHTML = "";
+        broadcastData({
+            type: REMOVE_USER,
+            from: this.props.current_user,
+            id: "76"
+        });
     }
 
     join(data){
@@ -85,9 +92,8 @@ class VideoCall extends React.Component{
         let video = document.getElementById(`remoteVideoContainer+${data.from}`);
         video && video.remove();
 
-        let peers = this.state.pcPeers
+        let peers = this.pcPeers
         delete peers[data.from]
-        this.setState({ pcPeers: peers });
     }
     createPC(userId, isOffer){
 
@@ -97,24 +103,28 @@ class VideoCall extends React.Component{
         //exchange ICE line 108
         //add the stream line 118
         //return an instance of peer connection line 134
-        let pc = new RTCPeerConnection(this.state.ice)
-        let oldPeers = this.state.pcPeers
-        let newPeer = {userId: pc};
-        this.setState({pcPeers: merge({},oldPeers,newPeer)});
-        console.log(this.state.localStream)
+        let pc = new RTCPeerConnection(ice)
+
+        this.pcPeers[userId] = pc;
+
+
+        console.log(this.localStream)
         console.log(pc)
-        pc.addStream(this.state.localStream)
+        this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
+
         let that = this;
-        if (isOffer && pc){
+        if (isOffer){
             pc.createOffer().then(offer => {
-                pc.setLocalDescription(offer);
-                broadcastData({
-                    type: EXCHANGE,
-                    from: that.props.current_user,
-                    to: userId,
-                    sdp: JSON.stringify(pc.localDescription),
-                    id: "76"
+                pc.setLocalDescription(offer).then( ()=> {
+                    broadcastData({
+                        type: EXCHANGE,
+                        from: that.props.current_user,
+                        to: userId,
+                        sdp: JSON.stringify(pc.localDescription),
+                        id: "76"
+                    })
                 });
+
             });
         }
         pc.onicecandidate = (e) => {
@@ -128,13 +138,14 @@ class VideoCall extends React.Component{
                 });
             }
         }
-        pc.onaddstream = e => {
-            console.log(e.stream)
+        pc.ontrack = e => {
+            console.log(e.streams)
             const remoteVid = document.createElement("video");
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
-            remoteVid.srcObject = e.stream;
-            that.state.remoteVideoContainer.appendChild(remoteVid);
+            remoteVid.srcObject = e.streams[0];
+            const vidContainer = document.getElementById("remote-video-container")
+            vidContainer.appendChild(remoteVid);
         };
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
@@ -153,28 +164,24 @@ class VideoCall extends React.Component{
         const that = this
         let pc;
 
-        if (!this.state.pcPeers[data.from]){
+        if (!this.pcPeers[data.from]){
             pc = this.createPC(data.from, false);
         } else {
-            pc = this.state.pcPeers[data.from];
+            pc = this.pcPeers[data.from];
         }
 
     
         if (data.candidate){
             let candidate = JSON.parse(data.candidate)
-
-
             pc.addIceCandidate(new RTCIceCandidate(candidate))
-            .then(() => {
-                console.log("Ice candidate added", candidate)}).catch( (errors) => console.log(errors))
-            ;
+            .then(() => {console.log("Ice candidate added", candidate)}).catch( (errors) => console.log(errors));
         }
         
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
 
 
-                pc.setRemoteDescription(new RTCSessionDescription(sdp))
+                pc.setRemoteDescription(sdp)
                 .then(() => {
                     if (sdp.type === "offer") {
                         pc.createAnswer().then(answer => {
@@ -204,7 +211,7 @@ class VideoCall extends React.Component{
     }
     render(){
         return (
-            <div className='video-call'>
+            <div id='vidContainer' className='video-call'>
                 <div id="remote-video-container"></div>
                     <video id="local-video" autoPlay></video>
 
