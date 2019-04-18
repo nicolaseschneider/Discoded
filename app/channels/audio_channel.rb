@@ -3,7 +3,7 @@ class AudioChannel < ApplicationCable::Channel
     stream_from "voice_channel_#{params[:id]}"
   end
 
-  def broadcast(options){
+  def broadcast(options)
     
     channel_id = options["channelId"]
     type = options["data"]["type"]
@@ -19,7 +19,7 @@ class AudioChannel < ApplicationCable::Channel
         sdp: sdp,
         candidate: candidate
       )
-  }
+  end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
