@@ -31,7 +31,7 @@ class VideoCall extends React.Component{
         lightsCamera.bind(this)();
     }
 
-    joinCall(e){
+    joinCall (e){
         //connect to action cable
         //switch on broadcasted data.type and decide what to do from there
         e.preventDefault();
@@ -101,9 +101,11 @@ class VideoCall extends React.Component{
         let oldPeers = this.state.pcPeers
         let newPeer = {userId: pc};
         this.setState({pcPeers: merge({},oldPeers,newPeer)});
+        console.log(this.state.localStream)
+        console.log(pc)
         pc.addStream(this.state.localStream)
         let that = this;
-        if (isOffer){
+        if (isOffer && pc){
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer);
                 broadcastData({
@@ -127,6 +129,7 @@ class VideoCall extends React.Component{
             }
         }
         pc.onaddstream = e => {
+            console.log(e.stream)
             const remoteVid = document.createElement("video");
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
@@ -146,6 +149,7 @@ class VideoCall extends React.Component{
         return pc;
     }
     exchange(data){
+
         const that = this
         let pc;
 
@@ -156,41 +160,45 @@ class VideoCall extends React.Component{
         }
 
     
-        if (true){
-            let candidate = JSON.parse(data.sdp)
+        if (data.candidate){
+            let candidate = JSON.parse(data.candidate)
 
-            let iCEcandidate = new RTCIceCandidate(candidate)
-            pc.addIceCandidate(iCEcandidate)
+
+            pc.addIceCandidate(new RTCIceCandidate(candidate))
             .then(() => {
-     
-                console.log("Ice candidate added", candidate)}).catch( () => console.log("ERROR"))
+                console.log("Ice candidate added", candidate)}).catch( (errors) => console.log(errors))
             ;
         }
+        
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
-            pc.setRemoteDescription(new RTCSessionDescription(sdp))
-            .then(() => {
-                if (sdp.type === "offer") {
-                    pc.createAnswer().then(answer => {
-                        console.log('got description')
-                        pc.setLocalDescription(answer)
-                        .then(function (){
-                            console.log("Sending SDP:", data.from, answer)
 
-                            console.log(answer.type)
-                            broadcastData({
-                                type: EXCHANGE,
-                                from: that.props.current_user,
-                                to: data.from,
-                                sdp: JSON.stringify(pc.localDescription),
-                                id: "76"
+
+                pc.setRemoteDescription(new RTCSessionDescription(sdp))
+                .then(() => {
+                    if (sdp.type === "offer") {
+                        pc.createAnswer().then(answer => {
+                            console.log('got description')
+                            pc.setLocalDescription(answer)
+                            .then(function (){
+                                console.log("Sending SDP:", data.from, answer)
+    
+                                console.log(answer.type)
+                                broadcastData({
+                                    type: EXCHANGE,
+                                    from: that.props.current_user,
+                                    to: data.from,
+                                    sdp: JSON.stringify(pc.localDescription),
+                                    id: "76"
+                                });
                             });
-                        });
-                            
-                    });
+                                
+                        }).catch( errors => console.log(errors));
+    
+                    }
+                })
 
-                }
-            })
+
             ;
         }
     }

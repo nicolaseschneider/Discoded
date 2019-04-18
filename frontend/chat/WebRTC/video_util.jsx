@@ -11,7 +11,7 @@ export const lightsCamera = function(){
     if (document.readyState === "interactive") {
         navigator.mediaDevices.getUserMedia(
             {
-                audio: true,
+                audio: false,
                 video: true
             }
         ).then(stream => {
@@ -24,22 +24,6 @@ export const lightsCamera = function(){
 }
 // Ice Credentials
 export const ice = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
-
-const handleLeaveSession = () => {
-    for (user in pcPeers) {
-        pcPeers[user].close();
-    }
-    pcPeers = {};
-
-    App.session.unsubscribe();
-
-    remoteVideoContainer.innerHTML = "";
-
-    broadcastData({
-        type: REMOVE_USER,
-        from: currentUser
-    });
-};
 
 const createPC = (userId, isOffer) => {
     let pc = new RTCPeerConnection(ice);

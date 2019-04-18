@@ -6,7 +6,7 @@ class Api::ServersController < ApplicationController
   end
   
   def show
-    @server = Server.find(params[:id])
+    @server = Server.includes(:channels).find(params[:id])
     render :show
   end
 
