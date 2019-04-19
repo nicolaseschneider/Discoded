@@ -1,7 +1,7 @@
 import React from 'react';
 import { broadcastData, JOIN_CALL, LEAVE_CALL, EXCHANGE, lightsCamera, ice } from './video_util.jsx'
 import {connect} from 'react-redux'
-import { merge } from 'lodash'
+
 const msp = state =>({
     current_user: state.session.currentUser
 })
@@ -28,6 +28,7 @@ class VideoCall extends React.Component{
     joinCall (e){
         //connect to action cable
         //switch on broadcasted data.type and decide what to do from there
+        lightsCamera.bind(this)();
         e.preventDefault();
         const that = this;
         const me = this.props.current_user;
@@ -78,7 +79,7 @@ class VideoCall extends React.Component{
       
         this.remoteVideoContainer.innerHTML = "";
         broadcastData({
-            type: REMOVE_USER,
+            type: LEAVE_CALL,
             from: this.props.current_user,
             id: "76"
         });
@@ -88,7 +89,6 @@ class VideoCall extends React.Component{
         this.createPC(data.from, true)
     }
     removeUser(data){
-        console.log("removing user", data.from);
         let video = document.getElementById(`remoteVideoContainer+${data.from}`);
         video && video.remove();
 
@@ -106,10 +106,6 @@ class VideoCall extends React.Component{
         let pc = new RTCPeerConnection(ice)
 
         this.pcPeers[userId] = pc;
-
-
-        console.log(this.localStream)
-        console.log(pc)
         this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
 
         let that = this;
@@ -139,7 +135,7 @@ class VideoCall extends React.Component{
             }
         }
         pc.ontrack = e => {
-            console.log(e.streams)
+
             const remoteVid = document.createElement("video");
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
@@ -149,7 +145,7 @@ class VideoCall extends React.Component{
         };
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
-                console.log("Disconnected:", userId);
+
                 broadcastData({
                     type: REMOVE_USER,
                     from: userId,
@@ -174,12 +170,13 @@ class VideoCall extends React.Component{
         if (data.candidate){
             let candidate = JSON.parse(data.candidate)
             pc.addIceCandidate(new RTCIceCandidate(candidate))
-            .then(() => {console.log("Ice candidate added", candidate)}).catch( (errors) => console.log(errors));
         }
         
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
-
+                console.log('-------')
+                console.log(sdp)
+                console.log('-------')
 
                 pc.setRemoteDescription(sdp)
                 .then(() => {
@@ -189,8 +186,7 @@ class VideoCall extends React.Component{
                             pc.setLocalDescription(answer)
                             .then(function (){
                                 console.log("Sending SDP:", data.from, answer)
-    
-                                console.log(answer.type)
+
                                 broadcastData({
                                     type: EXCHANGE,
                                     from: that.props.current_user,

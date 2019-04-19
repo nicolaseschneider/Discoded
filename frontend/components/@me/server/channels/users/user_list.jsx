@@ -47,7 +47,7 @@ class UserList extends React.Component{
     if (this.props.users.length > 0) {
       users = this.props.users.map((user) => {
         return (
-          <UserListItem key ={user ? user.id : ""} user={user} />
+          <UserListItem key={Math.random() * 1123123} user={user} />
         )
       })
     }
