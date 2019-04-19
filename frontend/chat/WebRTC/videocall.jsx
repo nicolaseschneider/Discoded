@@ -36,7 +36,6 @@ class VideoCall extends React.Component{
             { channel: "VideoChannel", id: "76"},
             {
                 connected: () => {
-                    console.log("connected")
                     broadcastData({
                         type: JOIN_CALL, 
                         from: me, 
