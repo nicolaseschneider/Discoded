@@ -24,11 +24,11 @@ export const lightsCamera = function(){
 // Ice Credentials
 export const ice = { 'iceServers': [
     {
-        urls: 'turn:192.158.29.39:3478?transport=tcp',
-        username: '28224511:1379330808',
-        credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA='
+        urls: 'turn:numb.viagenie.ca',
+        username: 'nicoefschneider@gmail.com',
+        credential: 'Gludda113'
     },
-    { urls: 'stun:stun1.l.google.com:19302'},
+    // { urls: 'stun:stun1.l.google.com:19302'},
     { urls: "stun:stun2.l.google.com:19302"}]
 }
 export const broadcastData = data => {
