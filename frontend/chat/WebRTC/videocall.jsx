@@ -27,7 +27,7 @@ class VideoCall extends React.Component{
         this.localVideo = document.getElementById("local-video"),
         navigator.mediaDevices.getUserMedia(
             {
-                audio: false,
+                audio: true,
                 video: true
             }
         ).then(stream => {
@@ -56,7 +56,7 @@ class VideoCall extends React.Component{
                     });
                 },
                 received: data =>{
-                    // console.log("received:", data);
+                    console.log(this.pcPeers);
                     if (data.from === me) return;
                     switch(data.type) {
                         case JOIN_CALL:
@@ -69,6 +69,7 @@ class VideoCall extends React.Component{
                         default:
                             return;
                     }
+
                 },
             });
         

@@ -10,7 +10,7 @@ export const lightsCamera = function(){
     if (document.readyState === "interactive") {
         navigator.mediaDevices.getUserMedia(
             {
-                audio: false,
+                audio: true,
                 video: true
             }
         ).then(stream => {
