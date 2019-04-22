@@ -27,7 +27,7 @@ class VideoCall extends React.Component{
         this.localVideo = document.getElementById("local-video"),
         navigator.mediaDevices.getUserMedia(
             {
-                audio: true,
+                audio: false,
                 video: true
             }
         ).then(stream => {
@@ -110,15 +110,11 @@ class VideoCall extends React.Component{
     }
     createPC(userId, isOffer){
 
-        //create a new instance of a RTCPeerConnection line 92
-        //potentially create an "offer" line 98
-        //exchange SDP line 100
-        //exchange ICE line 108
-        //add the stream line 118
-        //return an instance of peer connection line 134
+    
         let pc = new RTCPeerConnection(ice)
 
         this.pcPeers[userId] = pc;
+        console.log(this.localStream.getTracks())
         this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
 
         let that = this;
