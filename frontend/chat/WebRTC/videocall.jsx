@@ -114,7 +114,9 @@ class VideoCall extends React.Component{
 
         this.pcPeers[userId] = pc;
         console.log(this.localStream.getTracks())
-        this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
+        setTimeout( () => {
+            this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
+        }, 2500)
 
         let that = this;
         if (isOffer){
@@ -164,7 +166,7 @@ class VideoCall extends React.Component{
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
 
-                setTimeout( () => {broadcastData({
+                setTimeout( () => { broadcastData({
                     type: LEAVE_CALL,
                     from: userId,
                     id: "76"
