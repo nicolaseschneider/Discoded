@@ -114,9 +114,7 @@ class VideoCall extends React.Component{
 
         this.pcPeers[userId] = pc;
         console.log(this.localStream.getTracks())
-        setTimeout( () => {
-            this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
-        }, 2500)
+        this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
 
         let that = this;
         if (isOffer){
