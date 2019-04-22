@@ -158,7 +158,7 @@ class VideoCall extends React.Component{
             if (pc.iceConnectionState === 'disconnected'){
 
                 broadcastData({
-                    type: REMOVE_USER,
+                    type: LEAVE_CALL,
                     from: userId,
                     id: "76"
                 });
