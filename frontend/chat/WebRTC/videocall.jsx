@@ -9,7 +9,6 @@ class VideoCall extends React.Component{
     constructor(props){
         super(props)
         this.pcPeers = {};
-        this.state = {active: false};
         
     }
     //ice = ice credentials
@@ -32,8 +31,8 @@ class VideoCall extends React.Component{
                 video: true
             }
         ).then(stream => {
-            that.localStream = stream;
-            that.localVideo.srcObject = stream;
+            this.localStream = stream;
+            this.localVideo.srcObject = stream;
         }).catch((error) => {console.log(error)});
 
     }
