@@ -43,7 +43,6 @@ class VideoCall extends React.Component{
         lightsCamera.bind(this)();
         console.log(this.localStream)
         e.preventDefault();
-        const that = this;
         const me = this.props.current_user;
         App.cable.subscriptions.create(
             { channel: "VideoChannel", id: "76"},
@@ -154,7 +153,6 @@ class VideoCall extends React.Component{
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
             remoteVid.srcObject = e.streams[0];
-            console.log(e)
             console.log('~~~~~~~~~~~`')
             console.log('~~~~~~~~~~~`')
             console.log(e.streams)
