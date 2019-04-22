@@ -23,9 +23,9 @@ export const lightsCamera = function(){
 }
 // Ice Credentials
 export const ice = {
-    urls: 'turn:192.158.29.39:3478?transport=tcp',
-    username: '28224511:1379330808',
-    credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=' } 
+    urls: 'numb.viagenie.ca',
+    username: 'nicoefschneider@gmail.com',
+    credential: 'Gludda113' } 
 
 export const broadcastData = data => {
     fetch("calls", {
