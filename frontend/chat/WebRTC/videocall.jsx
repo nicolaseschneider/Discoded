@@ -41,6 +41,7 @@ class VideoCall extends React.Component{
         //connect to action cable
         //switch on broadcasted data.type and decide what to do from there
         lightsCamera.bind(this)();
+        console.log(this.localStream)
         e.preventDefault();
         const that = this;
         const me = this.props.current_user;
@@ -123,7 +124,8 @@ class VideoCall extends React.Component{
         if (isOffer){
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer).then( ()=> {
-                    console.log(pc.localDescription)
+
+                    console.log(JSON.parse(pc.localDescription.sdp));
                     broadcastData({
                         type: EXCHANGE,
                         from: that.props.current_user,
@@ -156,7 +158,6 @@ class VideoCall extends React.Component{
             console.log('~~~~~~~~~~~`')
             console.log(e.streams)
             console.log('~~~~~~~~~~~`')
-
             console.log('~~~~~~~~~~~`')
 
             this.remoteVideoContainer.appendChild(remoteVid);
