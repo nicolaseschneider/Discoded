@@ -23,7 +23,7 @@ export const lightsCamera = function(){
 }
 // Ice Credentials
 export const ice = {
-    iceServers: ['turn:192.158.29.39:3478?transport=tcp', "stun:stun2.l.google.com:19302"],
+    urls: 'turn:192.158.29.39:3478?transport=tcp',
     username: '28224511:1379330808',
     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=' } 
 
