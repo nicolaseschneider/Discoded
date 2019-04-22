@@ -189,27 +189,29 @@ class VideoCall extends React.Component{
             console.log('-------')
             console.log(sdp)
             console.log('-------')
-
-            pc.setRemoteDescription(sdp).then(() => {
-                if (sdp.type === "offer") {
-                    pc.createAnswer().then(answer => {
-                        console.log('got description')
-                        pc.setLocalDescription(answer)
-                        .then( () => {
-                            console.log("Sending SDP:", data.from, answer)
-                            broadcastData({
-                                type: EXCHANGE,
-                                from: that.props.current_user,
-                                to: data.from,
-                                sdp: JSON.stringify(pc.localDescription),
-                                id: "76"
+            if (!sdp.candidate){
+                pc.setRemoteDescription(sdp).then(() => {
+                    // if (sdp.type === "offer") {
+                        pc.createAnswer().then(answer => {
+                            console.log('got description')
+                            pc.setLocalDescription(answer)
+                            .then( () => {
+                                console.log("Sending SDP:", data.from, answer)
+                                broadcastData({
+                                    type: EXCHANGE,
+                                    from: that.props.current_user,
+                                    to: data.from,
+                                    sdp: JSON.stringify(pc.localDescription),
+                                    id: "76"
+                                });
                             });
-                        });
-                            
-                    }).catch( errors => console.log(errors));
+                                
+                        }).catch( errors => console.log(errors));
+    
+                    // }
+                }).catch( (errors) => console.log(errors));
 
-                }
-            }).catch( (errors) => console.log(errors));
+            }
         }
     }
     render(){
