@@ -125,7 +125,7 @@ class VideoCall extends React.Component{
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer).then( ()=> {
 
-                    console.log(JSON.parse(pc.localDescription.sdp));
+                    console.log(pc.localDescription.sdp);
                     broadcastData({
                         type: EXCHANGE,
                         from: that.props.current_user,
