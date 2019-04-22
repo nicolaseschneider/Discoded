@@ -24,6 +24,19 @@ class VideoCall extends React.Component{
         this.remoteVideoContainer = document.getElementById("remote-video-container")
         lightsCamera.bind(this)();
     }
+    componentDidUpdate(){
+        this.localVideo = document.getElementById("local-video"),
+        navigator.mediaDevices.getUserMedia(
+            {
+                audio: false,
+                video: true
+            }
+        ).then(stream => {
+            that.localStream = stream;
+            that.localVideo.srcObject = stream;
+        }).catch((error) => {console.log(error)});
+
+    }
 
     joinCall (e){
         //connect to action cable
@@ -139,8 +152,8 @@ class VideoCall extends React.Component{
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
             remoteVid.srcObject = e.streams[0];
-            const vidContainer = document.getElementById("remote-video-container")
-            vidContainer.appendChild(remoteVid);
+
+            this.remoteVideoContainer.appendChild(remoteVid);
         };
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
@@ -173,35 +186,31 @@ class VideoCall extends React.Component{
         
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
-                console.log('-------')
-                console.log(sdp)
-                console.log('-------')
 
-                pc.setRemoteDescription(sdp)
-                .then(() => {
-                    if (sdp.type === "offer") {
-                        pc.createAnswer().then(answer => {
-                            console.log('got description')
-                            pc.setLocalDescription(answer)
-                            .then(function (){
-                                console.log("Sending SDP:", data.from, answer)
+            console.log('-------')
+            console.log(sdp)
+            console.log('-------')
 
-                                broadcastData({
-                                    type: EXCHANGE,
-                                    from: that.props.current_user,
-                                    to: data.from,
-                                    sdp: JSON.stringify(pc.localDescription),
-                                    id: "76"
-                                });
+            pc.setRemoteDescription(sdp).then(() => {
+                if (sdp.type === "offer") {
+                    pc.createAnswer().then(answer => {
+                        console.log('got description')
+                        pc.setLocalDescription(answer)
+                        .then( () => {
+                            console.log("Sending SDP:", data.from, answer)
+                            broadcastData({
+                                type: EXCHANGE,
+                                from: that.props.current_user,
+                                to: data.from,
+                                sdp: JSON.stringify(pc.localDescription),
+                                id: "76"
                             });
-                                
-                        }).catch( errors => console.log(errors));
-    
-                    }
-                })
+                        });
+                            
+                    }).catch( errors => console.log(errors));
 
-
-            ;
+                }
+            }).catch( (errors) => console.log(errors));
         }
     }
     render(){
