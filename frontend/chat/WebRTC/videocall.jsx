@@ -49,11 +49,11 @@ class VideoCall extends React.Component{
             { channel: "VideoChannel", id: "76"},
             {
                 connected: () => {
-                    broadcastData({
+                    setTimeout( () => {broadcastData({
                         type: JOIN_CALL, 
                         from: me, 
                         id: "76" 
-                    });
+                    });}, 90)
                 },
                 received: data =>{
                     console.log(this.pcPeers);
@@ -91,11 +91,11 @@ class VideoCall extends React.Component{
         App.cable.subscriptions.subscriptions = [];
       
         this.remoteVideoContainer.innerHTML = "";
-        broadcastData({
+        setTimeout( () => {broadcastData({
             type: LEAVE_CALL,
             from: this.props.current_user,
             id: "76"
-        });
+        });},90)
     }
 
     join(data){
@@ -123,26 +123,29 @@ class VideoCall extends React.Component{
                 pc.setLocalDescription(offer).then( ()=> {
 
                     console.log(pc.localDescription.sdp);
-                    broadcastData({
+                    
+                    setTimeout( () => {
+                        broadcastData({
                         type: EXCHANGE,
                         from: that.props.current_user,
                         to: userId,
                         sdp: JSON.stringify(pc.localDescription),
                         id: "76"
-                    })
+                        })
+                }, 90); 
                 });
 
             });
         }
         pc.onicecandidate = (e) => {
             if (e.candidate){
-                broadcastData({
+                setTimeout( () => {broadcastData({
                     type: EXCHANGE,
                     from: that.props.current_user,
                     to: userId,
                     sdp: JSON.stringify(e.candidate),
                     id: "76"
-                });
+                });},90)
             }
         }
         pc.ontrack = e => {
@@ -163,11 +166,12 @@ class VideoCall extends React.Component{
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
 
-                broadcastData({
+                setTimeout( () => {broadcastData({
                     type: LEAVE_CALL,
                     from: userId,
                     id: "76"
                 });
+            }, 90);
             }
         };
         return pc;
@@ -203,13 +207,15 @@ class VideoCall extends React.Component{
                             pc.setLocalDescription(answer)
                             .then( () => {
                                 console.log("Sending SDP:", data.from, answer)
-                                broadcastData({
-                                    type: EXCHANGE,
-                                    from: that.props.current_user,
-                                    to: data.from,
-                                    sdp: JSON.stringify(pc.localDescription),
-                                    id: "76"
-                                });
+                                setTimeout( () => {
+                                    broadcastData({
+                                        type: EXCHANGE,
+                                        from: that.props.current_user,
+                                        to: data.from,
+                                        sdp: JSON.stringify(pc.localDescription),
+                                        id: "76"
+                                    });
+                                }, 90);
                             });
                                 
                         }).catch( errors => console.log(errors));
