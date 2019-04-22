@@ -23,7 +23,9 @@ export const lightsCamera = function(){
 }
 // Ice Credentials
 export const ice = {
-    iceServers: [{urls:"turn:turn01.hubl.in?transport=udp"},{urls: "turn:turn02.hubl.in?transport=tcp"},{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
+    iceServers: ['turn:192.158.29.39:3478?transport=tcp', "stun:stun2.l.google.com:19302"],
+    username: '28224511:1379330808',
+    credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=' } 
 
 export const broadcastData = data => {
     fetch("calls", {
