@@ -53,7 +53,7 @@ class VideoCall extends React.Component{
                         type: JOIN_CALL, 
                         from: me, 
                         id: "76" 
-                    });}, 90)
+                    });}, 1000)
                 },
                 received: data =>{
                     console.log(this.pcPeers);
@@ -95,7 +95,7 @@ class VideoCall extends React.Component{
             type: LEAVE_CALL,
             from: this.props.current_user,
             id: "76"
-        });},90)
+        });},1000)
     }
 
     join(data){
@@ -132,7 +132,7 @@ class VideoCall extends React.Component{
                         sdp: JSON.stringify(pc.localDescription),
                         id: "76"
                         })
-                }, 90); 
+                }, 1000); 
                 });
 
             });
@@ -145,7 +145,7 @@ class VideoCall extends React.Component{
                     to: userId,
                     sdp: JSON.stringify(e.candidate),
                     id: "76"
-                });},90)
+                });},1000)
             }
         }
         pc.ontrack = e => {
@@ -171,7 +171,7 @@ class VideoCall extends React.Component{
                     from: userId,
                     id: "76"
                 });
-            }, 90);
+            }, 1000);
             }
         };
         return pc;
@@ -215,7 +215,7 @@ class VideoCall extends React.Component{
                                         sdp: JSON.stringify(pc.localDescription),
                                         id: "76"
                                     });
-                                }, 90);
+                                }, 1000);
                             });
                                 
                         }).catch( errors => console.log(errors));
