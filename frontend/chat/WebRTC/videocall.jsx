@@ -55,7 +55,7 @@ class VideoCall extends React.Component{
                     });
                 },
                 received: data =>{
-                    console.log("received:", data);
+                    // console.log("received:", data);
                     if (data.from === me) return;
                     switch(data.type) {
                         case JOIN_CALL:
@@ -123,6 +123,7 @@ class VideoCall extends React.Component{
         if (isOffer){
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer).then( ()=> {
+                    console.log(pc.localDescription)
                     broadcastData({
                         type: EXCHANGE,
                         from: that.props.current_user,
@@ -151,6 +152,12 @@ class VideoCall extends React.Component{
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
             remoteVid.srcObject = e.streams[0];
+            console.log('~~~~~~~~~~~`')
+            console.log('~~~~~~~~~~~`')
+            console.log(e.streams)
+            console.log('~~~~~~~~~~~`')
+
+            console.log('~~~~~~~~~~~`')
 
             this.remoteVideoContainer.appendChild(remoteVid);
         };
@@ -186,14 +193,14 @@ class VideoCall extends React.Component{
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
 
-            console.log('-------')
-            console.log(sdp)
-            console.log('-------')
+            // console.log('-------')
+            // console.log(sdp)
+            // console.log('-------')
             if (!sdp.candidate){
                 pc.setRemoteDescription(sdp).then(() => {
                     if (sdp.type === "offer") {
                         pc.createAnswer().then(answer => {
-                            console.log('got description')
+                            // console.log('got description')
                             pc.setLocalDescription(answer)
                             .then( () => {
                                 console.log("Sending SDP:", data.from, answer)
