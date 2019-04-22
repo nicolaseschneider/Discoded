@@ -2,7 +2,7 @@
 // Broadcast Types
 export const JOIN_CALL = "JOIN_CALL";
 export const EXCHANGE = "EXCHANGE";
-export const LEAVE_CALL = "LEAVE_CALL";
+export const LEAVE_CALL = "LEAVE_CALL"; 
 //get the local video stream
 export const lightsCamera = function(){
     const that = this
@@ -22,11 +22,13 @@ export const lightsCamera = function(){
 
 }
 // Ice Credentials
-export const ice = {
-    urls: 'numb.viagenie.ca',
-    username: 'nicoefschneider@gmail.com',
-    credential: 'Gludda113' } 
-
+export const ice = { 'iceServers': [
+    {
+        urls: 'turn:192.158.29.39:3478?transport=tcp',
+        username: '28224511:1379330808',
+        credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA='},
+    { urls: 'stun:stun.l.google.com:19302'}]
+}
 export const broadcastData = data => {
     fetch("calls", {
         method: "POST",
