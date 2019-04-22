@@ -191,7 +191,7 @@ class VideoCall extends React.Component{
             console.log('-------')
             if (!sdp.candidate){
                 pc.setRemoteDescription(sdp).then(() => {
-                    // if (sdp.type === "offer") {
+                    if (sdp.type === "offer") {
                         pc.createAnswer().then(answer => {
                             console.log('got description')
                             pc.setLocalDescription(answer)
@@ -208,7 +208,7 @@ class VideoCall extends React.Component{
                                 
                         }).catch( errors => console.log(errors));
     
-                    // }
+                    }
                 }).catch( (errors) => console.log(errors));
 
             }
