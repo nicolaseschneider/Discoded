@@ -151,6 +151,7 @@ class VideoCall extends React.Component{
             remoteVid.id = `remoteVideoContainer+${userId}`;
             remoteVid.autoplay = "autoplay";
             remoteVid.srcObject = e.streams[0];
+            console.log(e)
             console.log('~~~~~~~~~~~`')
             console.log('~~~~~~~~~~~`')
             console.log(e.streams)
