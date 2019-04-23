@@ -26,7 +26,7 @@ class DMIndex extends React.Component{
 
   render(){
     const channelList = this.props.channels.map(channel =>
-        <NavLink to={`/@me/${this.props.uID}/DMs/${channel.id}`}>
+      <NavLink key={channel.id} to={`/@me/${this.props.uID}/DMs/${channel.id}`}>
           <li key={channel.id}>
               <img src={window.chatIcon} />
               <p className="channel-name">{this.parseDM(channel.name)}</p>

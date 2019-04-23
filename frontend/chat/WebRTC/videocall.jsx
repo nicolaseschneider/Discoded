@@ -13,17 +13,24 @@ class VideoCall extends React.Component{
     }
 
     componentDidMount(){
-
-
         this.localVideo = document.getElementById("local-video"),
         this.remoteVideoContainer = document.getElementById("remote-video-container")
-        lightsCamera.bind(this)();
+        navigator.mediaDevices.getUserMedia(
+            {
+                audio: true,
+                video: true
+            }
+        ).then(stream => {
+            this.localStream = stream;
+            this.localVideo.srcObject = stream;
+        }).catch((error) => { console.log(error) });
     }
+
     componentDidUpdate(){
         this.localVideo = document.getElementById("local-video"),
         navigator.mediaDevices.getUserMedia(
             {
-                audio: false,
+                audio: true,
                 video: true
             }
         ).then(stream => {
@@ -36,7 +43,7 @@ class VideoCall extends React.Component{
     joinCall (e){
         //connect to action cable
         //switch on broadcasted data.type and decide what to do from there
-        lightsCamera.bind(this)();
+
         e.preventDefault();
         const me = this.props.current_user;
         App.cable.subscriptions.create(
@@ -226,7 +233,7 @@ x
         return (
             <div id='vidContainer' className='video-call'>
                 <div id="remote-video-container"></div>
-                    <video id="local-video" autoPlay></video>
+                    <video id="local-video" muted autoPlay></video>
 
                     <hr />
 

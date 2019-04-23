@@ -1,6 +1,7 @@
 import React from 'react';
 import UserList from './server/channels/users/user_list';
 import ChatRoom from '../../chat/chatroom';
+import VideoCall from '../../chat/WebRTC/videocall';
 
 
 class DMDetail extends React.Component {
@@ -35,36 +36,66 @@ class DMDetail extends React.Component {
     }
 
   }
+  joinCall(){
+    this.setState({videoCall: true})
+  }
 
 
 
 
   render() {
-
-    return (<div className="channel-detail">
-      <header className="channel-header">
-        {this.props.channel ?
-          (
-            <div className="channel-name-container">
-              <div>
-                <p className="hash">#&nbsp;</p>
-                <p>{this.parseDM(this.props.channel.name)}</p>
+    if (this.state.videoCall){
+      return (<div className="channel-detail">
+        <header className="channel-header">
+          {this.props.channel ?
+            (
+              <div className="channel-name-container">
+                <div>
+                  <p className="hash">#&nbsp;</p>
+                  <p>{this.parseDM(this.props.channel.name)}</p>
+                </div>
+                <i onClick={this.joinCall.bind(this)} className="fas fa-video"></i>
               </div>
-              <i id="videoCall" class="fas fa-video"></i>
+            ) : ("")}
+        </header>
+        <div className="channel-content">
+          <VideoCall DMDetail={this} />
+          <aside className="channel-user-list">
+            <div className="user-list-header">
+              <h2>USERS</h2>
             </div>
-          ) : ("")}
-      </header>
-      <div className="channel-content">
-        <ChatRoom id={this.props.cID} user={this.props.user} />
-        <aside className="channel-user-list">
-          <div className="user-list-header">
-            <h2>USERS</h2>
-          </div>
-          <UserList cID={this.props.cID} />
-        </aside>
+            <UserList cID={this.props.cID} />
+          </aside>
+        </div>
       </div>
-    </div>
-    )
+      ) 
+    } else {
+
+      return (<div className="channel-detail">
+        <header className="channel-header">
+          {this.props.channel ?
+            (
+              <div className="channel-name-container">
+                <div>
+                  <p className="hash">#&nbsp;</p>
+                  <p>{this.parseDM(this.props.channel.name)}</p>
+                </div>
+                <i onClick={this.joinCall.bind(this)} className="fas fa-video"></i>
+              </div>
+            ) : ("")}
+        </header>
+        <div className="channel-content">
+          <ChatRoom id={this.props.cID} user={this.props.user} />
+          <aside className="channel-user-list">
+            <div className="user-list-header">
+              <h2>USERS</h2>
+            </div>
+            <UserList cID={this.props.cID} />
+          </aside>
+        </div>
+      </div>
+      )
+    }
   }
 }
 
