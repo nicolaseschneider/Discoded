@@ -23,11 +23,11 @@ export const lightsCamera = function(){
 }
 // Ice Credentials
 export const ice = { 'iceServers': [
-    // {
-    //     urls: 'turn:numb.viagenie.ca',
-    //     username: 'nicoefschneider@gmail.com',
-    //     credential: 'Gludda113'
-    // },
+    {
+        urls: 'turn:numb.viagenie.ca',
+        username: 'nicoefschneider@gmail.com',
+        credential: 'Gludda113'
+    },
     { urls: 'stun:stun.sipgate.net:3478'},
     { urls: 'stun:stun1.l.google.com:19302'},
     { urls: "stun:stun2.l.google.com:19302"}]
