@@ -59,6 +59,7 @@ class VideoCall extends React.Component{
                 received: data =>{
                     console.log(this.pcPeers);
                     if (data.from === me) return;
+                    console.log("received: ", data)
                     switch(data.type) {
                         case JOIN_CALL:
                             return this.join(data);
