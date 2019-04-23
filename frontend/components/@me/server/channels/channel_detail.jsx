@@ -29,8 +29,10 @@ class ChannelDetail extends React.Component{
           {this.props.channel ? 
           (
             <div className="channel-name-container">
-              <p className="hash">#&nbsp;</p>
-              <p>{this.props.channel.name}</p>
+              <div>
+                <p className="hash">#&nbsp;</p>
+                <p>{this.props.channel.name}</p>
+              </div>
             </div>
           ) : ("")}
         </header>

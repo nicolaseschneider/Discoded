@@ -24,10 +24,24 @@
   align-items: center;
   flex-direction: row;
   text-overflow: ellipsis;
+  justify-content: space-between;
   white-space: nowrap;
   height: 100%;
 }
-
+.channel-name-container > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-overflow: ellipsis;
+  height: 100%;
+}
+.fa-video{
+  color: rgba(255,255,255,0.5);
+}
+.fa-video:hover{
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+}
 .message-list {
   height: 100%;
   display: flex;

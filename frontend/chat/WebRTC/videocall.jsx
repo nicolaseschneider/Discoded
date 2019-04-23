@@ -11,10 +11,6 @@ class VideoCall extends React.Component{
         this.pcPeers = {};
         
     }
-    //ice = ice credentials
-    //pcPeers + localStream are objects
-
-    // localVideo + remoteVideoContainer are DOM elements
 
     componentDidMount(){
 
@@ -41,7 +37,6 @@ class VideoCall extends React.Component{
         //connect to action cable
         //switch on broadcasted data.type and decide what to do from there
         lightsCamera.bind(this)();
-        console.log(this.localStream)
         e.preventDefault();
         const me = this.props.current_user;
         App.cable.subscriptions.create(
@@ -57,9 +52,7 @@ class VideoCall extends React.Component{
                 }, 1000)
                 },
                 received: data =>{
-                    console.log(this.pcPeers);
                     if (data.from === me) return;
-                    console.log("received: ", data)
                     switch(data.type) {
                         case JOIN_CALL:
                             return this.join(data);
@@ -94,12 +87,13 @@ class VideoCall extends React.Component{
       
         this.remoteVideoContainer.innerHTML = "";
         setTimeout( () => {
-            broadcastData({
-            type: LEAVE_CALL,
-            from: this.props.current_user,
-            id: "76"
-        });
-    },1000)
+                broadcastData({
+                type: LEAVE_CALL,
+                from: this.props.current_user,
+                id: "76"
+            });
+        }, 1000);
+        this.props.DMDetail.setState({videoCall: false})
     }
 
     join(data){
@@ -117,15 +111,13 @@ class VideoCall extends React.Component{
     
         let pc = new RTCPeerConnection(ice)
         this.pcPeers[userId] = pc;
-        console.log(this.localStream.getTracks())
         this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
 
         let that = this;
         if (isOffer){
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer).then( ()=> {
-
-                    console.log(pc.localDescription.sdp);
+x
                     
                     setTimeout( () => {
                         broadcastData({
@@ -211,7 +203,6 @@ class VideoCall extends React.Component{
                             // console.log('got description')
                             pc.setLocalDescription(answer)
                             .then( () => {
-                                console.log("Sending SDP:", data.from, answer)
                                 setTimeout( () => {
                                     broadcastData({
                                         type: EXCHANGE,
