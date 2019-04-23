@@ -201,7 +201,7 @@
 .computer{
   z-index: 3;
   top: 360px;
-  right: 800px; 
+  right: 750px; 
 }
 .x1{
  top: 293px;
@@ -214,7 +214,7 @@
 .laptop{
   z-index: 4;
   top: 480px;
-  right: 350px; 
+  right: 310px; 
 }
 .headset{
   z-index: 5;
@@ -234,7 +234,7 @@
 .controller{
   z-index: 4;
   top: 720px;
-  right: 1280px; 
+  right: 1220px; 
 }
 .movin{
   z-index: 2;

@@ -1,15 +1,15 @@
 import React from 'react';
-import { broadcastData, JOIN_CALL, LEAVE_CALL, EXCHANGE, lightsCamera, ice } from './video_util.jsx'
+import { broadcastData, JOIN_CALL, LEAVE_CALL, EXCHANGE, ice } from './video_util.jsx'
 import {connect} from 'react-redux'
 
 const msp = state =>({
     current_user: state.session.currentUser
 })
 class VideoCall extends React.Component{
+
     constructor(props){
         super(props)
-        this.pcPeers = {};
-        
+        this.pcPeers = {};    
     }
 
     componentDidMount(){
@@ -118,7 +118,8 @@ class VideoCall extends React.Component{
     
         let pc = new RTCPeerConnection(ice)
         this.pcPeers[userId] = pc;
-        this.localStream.getTracks().forEach(track => pc.addTrack(track, this.localStream));
+        let vidcount = 0;
+        this.localStream.getTracks().forEach((track) => pc.addTrack(track, this.localStream));
 
         let that = this;
         if (isOffer){
@@ -143,28 +144,24 @@ x
             if (e.candidate){
                 setTimeout( () => {
                     broadcastData({
-                    type: EXCHANGE,
-                    from: that.props.current_user,
-                    to: userId,
-                    sdp: JSON.stringify(e.candidate),
-                    id: "76"
-                });
-            },1000)
+                        type: EXCHANGE,
+                        from: that.props.current_user,
+                        to: userId,
+                        sdp: JSON.stringify(e.candidate),
+                        id: "76"
+                    });
+                },1000)
             }
         }
         pc.ontrack = e => {
-
-            const remoteVid = document.createElement("video");
-            remoteVid.id = `remoteVideoContainer+${userId}`;
-            remoteVid.autoplay = "autoplay";
-            remoteVid.srcObject = e.streams[0];
-            console.log('~~~~~~~~~~~`')
-            console.log('~~~~~~~~~~~`')
-            console.log(e.streams)
-            console.log('~~~~~~~~~~~`')
-            console.log('~~~~~~~~~~~`')
-
-            this.remoteVideoContainer.appendChild(remoteVid);
+            if (vidcount === 0){
+                const remoteVid = document.createElement("video");
+                remoteVid.id = `remoteVideoContainer+${userId}`;
+                remoteVid.autoplay = "autoplay";
+                remoteVid.srcObject = e.streams[0];
+                this.remoteVideoContainer.appendChild(remoteVid);
+                vidcount++
+            }
         };
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
@@ -199,10 +196,7 @@ x
         
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
-
-            // console.log('-------')
-            // console.log(sdp)
-            // console.log('-------')
+            
             if (!sdp.candidate){
                 pc.setRemoteDescription(sdp).then(() => {
                     if (sdp.type === "offer") {
@@ -234,16 +228,16 @@ x
             <div id='vidContainer' className='video-call'>
                 <div id="remote-video-container"></div>
                     <video id="local-video" muted autoPlay></video>
+                    <div className='video-functions'>
 
-                    <hr />
+                        <button onClick={this.joinCall.bind(this)}>
+                            Join Call
+                        </button>
 
-                    <button onClick={this.joinCall.bind(this)}>
-                        Join Call
-                    </button>
-
-                    <button onClick={this.leaveCall.bind(this)}>
-                        Leave Call
-                    </button>
+                        <button onClick={this.leaveCall.bind(this)}>
+                            Leave Call
+                        </button>
+                    </div>
             </div>
         )
         
