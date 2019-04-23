@@ -22,15 +22,16 @@ export const lightsCamera = function(){
 
 }
 // Ice Credentials
-export const ice = { 'iceServers': [
-    {
-        urls: 'turn:numb.viagenie.ca',
-        username: 'nicoefschneider@gmail.com',
-        credential: 'Gludda113'
-    },
-    // { urls: 'stun:stun.sipgate.net:3478'},
-    { urls: 'stun:stun1.l.google.com:19302'},
-    { urls: "stun:stun2.l.google.com:19302"}]
+export const ice = { 
+    iceServers: [{ urls: ["stun:u2.xirsys.com"] }, 
+    { username: "mqa5vWL0jQtatIq6R0su1GH4mLA2M2hTpVHPUWX7lsj9shnsSlJLr-eoTCiBjbfbAAAAAFy_duJLYXJhdGU=", 
+    credential: "391dcc2a-6607-11e9-b0e6-6ea37c7028db", 
+    urls: ["turn:u2.xirsys.com:80?transport=udp", 
+    "turn:u2.xirsys.com:3478?transport=udp", 
+    "turn:u2.xirsys.com:80?transport=tcp", 
+    "turn:u2.xirsys.com:3478?transport=tcp", 
+    "turns:u2.xirsys.com:443?transport=tcp", 
+    "turns:u2.xirsys.com:5349?transport=tcp"] }]
 }
 export const broadcastData = data => {
     fetch("calls", {
