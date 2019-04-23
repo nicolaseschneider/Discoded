@@ -28,7 +28,8 @@ export const ice = { 'iceServers': [
     //     username: 'nicoefschneider@gmail.com',
     //     credential: 'Gludda113'
     // },
-    // { urls: 'stun:stun1.l.google.com:19302'},
+    { urls: 'stun:stun.sipgate.net:3478'},
+    { urls: 'stun:stun1.l.google.com:19302'},
     { urls: "stun:stun2.l.google.com:19302"}]
 }
 export const broadcastData = data => {
