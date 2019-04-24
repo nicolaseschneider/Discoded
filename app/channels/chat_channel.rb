@@ -23,7 +23,7 @@ class ChatChannel < ApplicationCable::Channel
   def load(id)
 
     channel = Channel.includes(:messages).find(id)
-    messages = channel.messages
+    messages = channel.messages.order(:created_at)
     socket = {
               messages: messages.collect(&:body),
               authors: messages.map{|msg| msg.author.username},

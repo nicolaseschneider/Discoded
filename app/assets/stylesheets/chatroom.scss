@@ -37,6 +37,7 @@
 }
 .fa-video{
   color: rgba(255,255,255,0.5);
+  margin-right: 13%;
 }
 .fa-video:hover{
   color: rgba(255,255,255,0.8);
@@ -213,4 +214,26 @@
   flex-direction: row-reverse;
   position: relative;
   z-index: 3;
+}
+.leave-call{
+  text-transform: uppercase;
+  background: #f04747;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin-left: 12px;
+}
+.join-call{
+  text-transform: uppercase;
+  background: #00b300;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin-right: 12px;
+  min-width: 77px;
+}
+.join-call:hover, .leave-call:hover{
+  cursor: pointer;
 }
