@@ -230,11 +230,11 @@ x
                     <video id="local-video" muted autoPlay></video>
                     <div className='video-functions'>
 
-                        <button onClick={this.joinCall.bind(this)}>
-                            Join Call
-                        </button>
+                    <button className='join-call' onClick={this.joinCall.bind(this)}>
+                        Join Call
+                    </button>
 
-                        <button onClick={this.leaveCall.bind(this)}>
+                    <button className='leave-call'onClick={this.leaveCall.bind(this)}>
                             Leave Call
                         </button>
                     </div>
