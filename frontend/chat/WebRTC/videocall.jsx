@@ -44,13 +44,7 @@ class VideoCall extends React.Component{
         for (let i = 0; i < pcKeys.length; i++) {
             this.pcPeers[pcKeys[i]].close();
         }
-        this.pcPeers = {};
-        this.localVideo.srcObject.getTracks().forEach(function (track) {
-            track.stop();
-        })
-        this.localVideo.srcObject = null;
         App.cable.subscriptions.subscriptions = [];
-        this.remoteVideoContainer.innerHTML = "";
         broadcastData({
             type: LEAVE_CALL,
             from: this.props.current_user,
