@@ -39,6 +39,24 @@ class VideoCall extends React.Component{
         }).catch((error) => {console.log(error)});
 
     }
+    componentWillUnmount(){
+        const pcKeys = Object.keys(this.pcPeers);
+        for (let i = 0; i < pcKeys.length; i++) {
+            this.pcPeers[pcKeys[i]].close();
+        }
+        this.pcPeers = {};
+        this.localVideo.srcObject.getTracks().forEach(function (track) {
+            track.stop();
+        })
+        this.localVideo.srcObject = null;
+        App.cable.subscriptions.subscriptions = [];
+        this.remoteVideoContainer.innerHTML = "";
+        broadcastData({
+            type: LEAVE_CALL,
+            from: this.props.current_user,
+            id: "76"
+        });
+    }
 
     joinCall (e){
         //connect to action cable
@@ -52,11 +70,11 @@ class VideoCall extends React.Component{
                 connected: () => {
                     setTimeout( () => {
                         broadcastData({
-                        type: JOIN_CALL, 
-                        from: me, 
-                        id: "76" 
-                    });
-                }, 1000)
+                            type: JOIN_CALL, 
+                            from: me, 
+                            id: "76" 
+                        });
+                    }, 0)
                 },
                 received: data =>{
                     if (data.from === me) return;
@@ -71,15 +89,12 @@ class VideoCall extends React.Component{
                         default:
                             return;
                     }
-
                 },
-            });
-        
-        
+        });
     }
     
     leaveCall(e){
-        //disconnect from the action cable
+
         e.preventDefault();
         const pcKeys = Object.keys(this.pcPeers);
         for(let i = 0; i < pcKeys.length; i++){
@@ -93,13 +108,13 @@ class VideoCall extends React.Component{
         App.cable.subscriptions.subscriptions = [];
       
         this.remoteVideoContainer.innerHTML = "";
-        setTimeout( () => {
-                broadcastData({
-                type: LEAVE_CALL,
-                from: this.props.current_user,
-                id: "76"
-            });
-        }, 1000);
+
+        broadcastData({
+            type: LEAVE_CALL,
+            from: this.props.current_user,
+            id: "76"
+        });
+  
         this.props.DMDetail.setState({videoCall: false})
     }
 
@@ -125,7 +140,6 @@ class VideoCall extends React.Component{
         if (isOffer){
             pc.createOffer().then(offer => {
                 pc.setLocalDescription(offer).then( ()=> {
-x
                     
                     setTimeout( () => {
                         broadcastData({
@@ -135,22 +149,20 @@ x
                         sdp: JSON.stringify(pc.localDescription),
                         id: "76"
                         })
-                }, 1000); 
+                }, 0); 
                 });
 
             });
         }
         pc.onicecandidate = (e) => {
             if (e.candidate){
-                setTimeout( () => {
-                    broadcastData({
-                        type: EXCHANGE,
-                        from: that.props.current_user,
-                        to: userId,
-                        sdp: JSON.stringify(e.candidate),
-                        id: "76"
-                    });
-                },1000)
+                broadcastData({
+                    type: EXCHANGE,
+                    from: that.props.current_user,
+                    to: userId,
+                    sdp: JSON.stringify(e.candidate),
+                    id: "76"
+                });
             }
         }
         pc.ontrack = e => {
@@ -166,13 +178,12 @@ x
         pc.oniceconnectionstatechange = e => {
             if (pc.iceConnectionState === 'disconnected'){
 
-                setTimeout( () => { 
-                    broadcastData({
+                broadcastData({
                     type: LEAVE_CALL,
                     from: userId,
                     id: "76"
                 });
-            }, 1000);
+
             }
         };
         return pc;
@@ -197,7 +208,7 @@ x
         if (data.sdp){
             const sdp = JSON.parse(data.sdp);
             
-            if (!sdp.candidate){
+            if (sdp && !sdp.candidate){
                 pc.setRemoteDescription(sdp).then(() => {
                     if (sdp.type === "offer") {
                         pc.createAnswer().then(answer => {
@@ -212,7 +223,7 @@ x
                                         sdp: JSON.stringify(pc.localDescription),
                                         id: "76"
                                     });
-                                }, 1000);
+                                }, 0);
                             });
                                 
                         }).catch( errors => console.log(errors));
