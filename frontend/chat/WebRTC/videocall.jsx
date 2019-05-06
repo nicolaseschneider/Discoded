@@ -150,13 +150,15 @@ class VideoCall extends React.Component{
         }
         pc.onicecandidate = (e) => {
             if (e.candidate){
-                broadcastData({
-                    type: EXCHANGE,
-                    from: that.props.current_user,
-                    to: userId,
-                    sdp: JSON.stringify(e.candidate),
-                    id: "76"
-                });
+                setTimeout(() => {
+                    broadcastData({
+                        type: EXCHANGE,
+                        from: that.props.current_user,
+                        to: userId,
+                        sdp: JSON.stringify(e.candidate),
+                        id: "76"
+                    });
+                }, 0); 
             }
         }
         pc.ontrack = e => {
