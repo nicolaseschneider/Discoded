@@ -13,8 +13,8 @@ class VideoCall extends React.Component{
     }
 
     componentDidMount(){
-        this.localVideo = document.getElementById("local-video"),
-        this.remoteVideoContainer = document.getElementById("remote-video-container")
+        this.localVideo = document.getElementById("local-video");
+        this.remoteVideoContainer = document.getElementById("remote-video-container");
         navigator.mediaDevices.getUserMedia(
             {
                 audio: true,
@@ -27,7 +27,7 @@ class VideoCall extends React.Component{
     }
 
     componentDidUpdate(){
-        this.localVideo = document.getElementById("local-video"),
+        this.localVideo = document.getElementById("local-video");
         navigator.mediaDevices.getUserMedia(
             {
                 audio: true,
